@@ -1,0 +1,6 @@
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe.config
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\ConsoleApplication3\obj\Debug\ConsoleApplication3.csprojResolveAssemblyReference.cache
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\ConsoleApplication3\obj\Debug\ConsoleApplication3.exe
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\ConsoleApplication3\obj\Debug\ConsoleApplication3.pdb

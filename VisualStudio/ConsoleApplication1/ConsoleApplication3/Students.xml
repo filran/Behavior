@@ -1,0 +1,27 @@
+<Students>
+  <Student>
+    <RollNo>1</RollNo>
+    <Name gender="male">Student 1</Name>
+    <Address>Xyz Street</Address>
+  </Student>
+  <Student>
+    <RollNo>2</RollNo>
+    <Name gender="male">Student 2</Name>
+    <Address>Xyz Street</Address>
+  </Student>
+  <Student>
+    <RollNo>3</RollNo>
+    <Name gender="male">Student 3</Name>
+    <Address>Xyz Street</Address>
+  </Student>
+  <Student>
+    <RollNo>4</RollNo>
+    <Name gender="famale">Student 4</Name>
+    <Address>Xyz Street</Address>
+  </Student>
+  <Student>
+    <RollNo>5</RollNo>
+    <Name gender="female">Student 5</Name>
+    <Address>Xyz Street</Address>
+  </Student>
+</Students>

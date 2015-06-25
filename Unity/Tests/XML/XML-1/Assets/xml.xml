@@ -1,0 +1,6 @@
+<Master>
+	<Customer>
+		<Name Gender="Male">Bill</Name>
+		<Age>34</Age>
+	</Customer>
+</Master>
