@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="XMI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="XMI.header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="XMI.documentation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="XMI.exporter" type="xs:string" />
+                    <xs:element name="XMI.exporterVersion" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="XMI.metamodel">
+                <xs:complexType>
+                  <xs:attribute name="xmi.name" type="xs:string" use="required" />
+                  <xs:attribute name="xmi.version" type="xs:decimal" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="XMI.content">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element name="Model_Management.Model">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Foundation.Core.ModelElement.name" type="xs:string" />
+                      <xs:element name="Foundation.Core.ModelElement.visibility">
+                        <xs:complexType>
+                          <xs:attribute name="xmi.value" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Foundation.Core.ModelElement.isSpecification">
+                        <xs:complexType>
+                          <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Foundation.Core.GeneralizableElement.isRoot">
+                        <xs:complexType>
+                          <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Foundation.Core.GeneralizableElement.isLeaf">
+                        <xs:complexType>
+                          <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Foundation.Core.GeneralizableElement.isAbstract">
+                        <xs:complexType>
+                          <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Foundation.Core.Namespace.ownedElement">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Foundation.Core.Class">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Foundation.Core.ModelElement.name" type="xs:string" />
+                                  <xs:element name="Foundation.Core.ModelElement.visibility">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.ModelElement.isSpecification">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.GeneralizableElement.isRoot">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.GeneralizableElement.isLeaf">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.GeneralizableElement.isAbstract">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.Class.isActive">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Model_Management.Package">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Foundation.Core.ModelElement.name" type="xs:string" />
+                                  <xs:element name="Foundation.Core.ModelElement.visibility">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.ModelElement.isSpecification">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.GeneralizableElement.isRoot">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.GeneralizableElement.isLeaf">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.GeneralizableElement.isAbstract">
+                                    <xs:complexType>
+                                      <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Foundation.Core.Namespace.ownedElement">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element name="Behavioral_Elements.Collaborations.Collaboration">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element name="Foundation.Core.ModelElement.name" type="xs:string" />
+                                              <xs:element name="Foundation.Core.ModelElement.visibility">
+                                                <xs:complexType>
+                                                  <xs:attribute name="xmi.value" type="xs:string" use="required" />
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element name="Foundation.Core.ModelElement.isSpecification">
+                                                <xs:complexType>
+                                                  <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element name="Foundation.Core.GeneralizableElement.isRoot">
+                                                <xs:complexType>
+                                                  <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element name="Foundation.Core.GeneralizableElement.isLeaf">
+                                                <xs:complexType>
+                                                  <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element name="Foundation.Core.GeneralizableElement.isAbstract">
+                                                <xs:complexType>
+                                                  <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element name="Foundation.Core.Namespace.ownedElement">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element maxOccurs="unbounded" name="Behavioral_Elements.Collaborations.ClassifierRole">
+                                                      <xs:complexType>
+                                                        <xs:sequence>
+                                                          <xs:element name="Foundation.Core.ModelElement.name" type="xs:string" />
+                                                          <xs:element name="Foundation.Core.ModelElement.visibility">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="xmi.value" type="xs:string" use="required" />
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Foundation.Core.ModelElement.isSpecification">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Foundation.Core.GeneralizableElement.isRoot">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Foundation.Core.GeneralizableElement.isLeaf">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Foundation.Core.GeneralizableElement.isAbstract">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Behavioral_Elements.Collaborations.ClassifierRole.multiplicity">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element name="Foundation.Data_Types.Multiplicity">
+                                                                  <xs:complexType>
+                                                                    <xs:sequence>
+                                                                      <xs:element name="Foundation.Data_Types.Multiplicity.range">
+                                                                        <xs:complexType>
+                                                                          <xs:sequence>
+                                                                            <xs:element name="Foundation.Data_Types.MultiplicityRange">
+                                                                              <xs:complexType>
+                                                                                <xs:sequence>
+                                                                                  <xs:element name="Foundation.Data_Types.MultiplicityRange.lower" type="xs:unsignedByte" />
+                                                                                  <xs:element name="Foundation.Data_Types.MultiplicityRange.upper" type="xs:unsignedByte" />
+                                                                                </xs:sequence>
+                                                                              </xs:complexType>
+                                                                            </xs:element>
+                                                                          </xs:sequence>
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                    </xs:sequence>
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Behavioral_Elements.Collaborations.ClassifierRole.base">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element name="Foundation.Core.Class">
+                                                                  <xs:complexType>
+                                                                    <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                        </xs:sequence>
+                                                        <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                                      </xs:complexType>
+                                                    </xs:element>
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element name="Behavioral_Elements.Collaborations.Collaboration.interaction">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="Behavioral_Elements.Collaborations.Interaction">
+                                                      <xs:complexType>
+                                                        <xs:sequence>
+                                                          <xs:element name="Foundation.Core.ModelElement.name" type="xs:string" />
+                                                          <xs:element name="Foundation.Core.ModelElement.visibility">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="xmi.value" type="xs:string" use="required" />
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Foundation.Core.ModelElement.isSpecification">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element name="Behavioral_Elements.Collaborations.Interaction.message">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element maxOccurs="unbounded" name="Behavioral_Elements.Collaborations.Message">
+                                                                  <xs:complexType>
+                                                                    <xs:sequence>
+                                                                      <xs:element name="Foundation.Core.ModelElement.name" type="xs:string" />
+                                                                      <xs:element name="Foundation.Core.ModelElement.visibility">
+                                                                        <xs:complexType>
+                                                                          <xs:attribute name="xmi.value" type="xs:string" use="required" />
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                      <xs:element name="Foundation.Core.ModelElement.isSpecification">
+                                                                        <xs:complexType>
+                                                                          <xs:attribute name="xmi.value" type="xs:boolean" use="required" />
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                      <xs:element name="Behavioral_Elements.Collaborations.Message.sender">
+                                                                        <xs:complexType>
+                                                                          <xs:sequence>
+                                                                            <xs:element name="Behavioral_Elements.Collaborations.ClassifierRole">
+                                                                              <xs:complexType>
+                                                                                <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                                                              </xs:complexType>
+                                                                            </xs:element>
+                                                                          </xs:sequence>
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                      <xs:element name="Behavioral_Elements.Collaborations.Message.receiver">
+                                                                        <xs:complexType>
+                                                                          <xs:sequence>
+                                                                            <xs:element name="Behavioral_Elements.Collaborations.ClassifierRole">
+                                                                              <xs:complexType>
+                                                                                <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                                                              </xs:complexType>
+                                                                            </xs:element>
+                                                                          </xs:sequence>
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                      <xs:element name="Behavioral_Elements.Collaborations.Message.action">
+                                                                        <xs:complexType>
+                                                                          <xs:sequence>
+                                                                            <xs:element name="Behavioral_Elements.Common_Behavior.UninterpretedAction">
+                                                                              <xs:complexType>
+                                                                                <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                                                              </xs:complexType>
+                                                                            </xs:element>
+                                                                          </xs:sequence>
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                    </xs:sequence>
+                                                                    <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                        </xs:sequence>
+                                                        <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                                      </xs:complexType>
+                                                    </xs:element>
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="Foundation.Extension_Mechanisms.TaggedValue">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Foundation.Extension_Mechanisms.TaggedValue.tag" type="xs:string" />
+                      <xs:element name="Foundation.Extension_Mechanisms.TaggedValue.value" type="xs:string" />
+                      <xs:element name="Foundation.Extension_Mechanisms.TaggedValue.modelElement">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Foundation.Core.ModelElement">
+                              <xs:complexType>
+                                <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="Diagramming.Diagram">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Diagramming.Diagram.name" type="xs:string" />
+                      <xs:element name="Diagramming.Diagram.toolName" type="xs:string" />
+                      <xs:element name="Diagramming.Diagram.diagramType" type="xs:string" />
+                      <xs:element name="Diagramming.Diagram.style" type="xs:string" />
+                      <xs:element name="Diagramming.Diagram.owner">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Foundation.Core.ModelElement">
+                              <xs:complexType>
+                                <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element minOccurs="0" name="Diagramming.Diagram.element">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="Diagramming.DiagramElement">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Diagramming.DiagramElement.geometry" type="xs:string" />
+                                  <xs:element name="Diagramming.DiagramElement.style" type="xs:string" />
+                                  <xs:element name="Foundation.Core.PresentationElement.subject">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element name="Foundation.Core.ModelElement">
+                                          <xs:complexType>
+                                            <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="XMI.difference" />
+        <xs:element name="XMI.extensions">
+          <xs:complexType>
+            <xs:attribute name="xmi.extender" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="xmi.version" type="xs:decimal" use="required" />
+      <xs:attribute name="timestamp" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

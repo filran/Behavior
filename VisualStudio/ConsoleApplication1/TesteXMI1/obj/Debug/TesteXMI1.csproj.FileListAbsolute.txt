@@ -1,0 +1,6 @@
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI1\bin\Debug\TesteXMI1.exe.config
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI1\bin\Debug\TesteXMI1.exe
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI1\bin\Debug\TesteXMI1.pdb
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI1\obj\Debug\TesteXMI1.exe
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI1\obj\Debug\TesteXMI1.pdb
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI1\obj\Debug\TesteXMI1.csprojResolveAssemblyReference.cache

@@ -16,8 +16,8 @@ namespace ConsoleApplication3
 
         static void Main(string[] args)
         {
-
-            url = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\ConsoleApplication3\\Students.xml";
+            //TROCAR URL QUANDO ESTIVER EM PC DIFERENTE
+            url = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\ConsoleApplication3\\Students.xml";
 
             using (FileStream xmlStream = new FileStream(url, FileMode.Open))
             {
@@ -29,7 +29,8 @@ namespace ConsoleApplication3
                     foreach (var student in deserializedStudents.Student)
                     {
                         Console.WriteLine("Roll No : {0}", student.RollNo);
-                        Console.WriteLine("Name : {0}", student.Name);
+                        Console.WriteLine("Name : {0}", student.Name.Value);
+                        Console.WriteLine("Gender : {0}", student.Name.gender);
                         Console.WriteLine("Address : {0}", student.Address);
                         Console.WriteLine("");
                     }
