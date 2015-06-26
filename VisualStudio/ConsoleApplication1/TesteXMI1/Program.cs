@@ -17,18 +17,18 @@ namespace TesteXMI1
             Console.WriteLine("Teste");
 
             //TROCAR URL QUANDO ESTIVER EM PC DIFERENTE
-            url = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI1\\DiagramaDeSequencia_1.xml";
+            url = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI1\\DiaSeq_UML1.4_XMI1.2.xml";
 
             using (FileStream xmlStream = new FileStream(url, FileMode.Open))
             {
                 using (XmlReader xmlReader = XmlReader.Create(xmlStream))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(XMI));
-                    XMI deserializedXMI = serializer.Deserialize(xmlReader) as XMI;
+                    XmlSerializer serializer = new XmlSerializer(typeof(Model));
+                    Model deserializedXMI = serializer.Deserialize(xmlReader) as Model;
 
-                    foreach (var xmi in deserializedXMI.XMIcontent)
+                    foreach (var model in deserializedXMI.ModelElementtaggedValue)
                     {
-                        
+                        Console.WriteLine("Teste : {0}", mode);
 
                     //    Console.WriteLine("Roll No : {0}", student.RollNo);
                     //    Console.WriteLine("Name : {0}", student.Name.Value);

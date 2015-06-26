@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/XmiLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/XmiLog">
+  <Property Timestamp="2015-06-26T18:01:55" XmiFileName="F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\DiaSeq_XMI2.1.xmi" />
+  <Message Timestamp="2015-06-26T18:01:55" Importance="High" Text="Importing the following XMI file: F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\DiaSeq_XMI2.1.xmi." />
+  <Warning Timestamp="2015-06-26T18:01:55" LineNumber="24" LinePosition="6" Importance="Medium" Text="Cannot create the following element: EA_Model::Dynamic View::EA_Collaboration1::Property. The element cannot be nested inside the following type: Package." />
+  <Warning Timestamp="2015-06-26T18:01:55" LineNumber="25" LinePosition="6" Importance="Medium" Text="Cannot create the following element: EA_Model::Dynamic View::EA_Collaboration1::Property. The element cannot be nested inside the following type: Package." />
+  <Warning Timestamp="2015-06-26T18:01:55" LineNumber="26" LinePosition="6" Importance="Medium" Text="Cannot create the following element: EA_Model::Dynamic View::EA_Collaboration1::Property. The element cannot be nested inside the following type: Package." />
+  <Message Timestamp="2015-06-26T18:01:55" Importance="High" Text="Number of imported elements: 27." />
+  <Message Timestamp="2015-06-26T18:01:55" Importance="High" Text="Number of imported relationships: 0." />
+  <Message Timestamp="2015-06-26T18:01:55" Importance="High" Text="Finished importing the XMI file." />
+  <Message Timestamp="2015-06-26T18:01:55" Importance="High" Text="Warnings were logged during XMI import." />
+</Log>
