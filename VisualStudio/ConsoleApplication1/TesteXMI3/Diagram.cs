@@ -1,32 +1,39 @@
-﻿//INSTRUCTIONS
-// The symbol "_" is used for inherit and for separate the class' name the first letter of next word is uppercase
-
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace TesteXML2
 {
     public class Diagram
     {
-        protected string id;
-        protected string name;
+        //DECLARATE VAR AND GET AND SET
+        public string Id {get; private set;}
+        public string Name { get; private set; }
 
-        public Diagram()
+        public Diagram(string id, string name)
         {
-
+            this.Id = id;
+            this.Name = name;
         }
+
+
     }
 
     //STRUCTURAL AND BEHAVIORAL INHERIT DIAGRAM
-    public class Structural_Diagram : Diagram
+    public class Structural : Diagram
     {
-
+        
     }
 
 
     //==========================================================================================================================================================================================
-    public class Behavioral_Diagram : Diagram
+    public class Behavioral : Diagram
     {
-
+        public Behavioral():base(id,name)
+        {
+            
+        }
     }
 
     //THIS CLASS ABOVE INHERIT BEHAVIORAL
@@ -38,28 +45,39 @@ namespace TesteXML2
         }
 
         //SEQUENCE DIAGRAM
-        public class Sequence_Behavioral_Diagram: Behavioral_Diagram
+        public class Sequence: Behavioral_Diagram
         {
+            protected Dictionary<string, Lifeline> lifelines;
+            protected Dictionary<string, Synchronous> synchronous;
+            protected Dictionary<string, Asynchronous> asynchronous;
 
+            public Sequence():base(id,name)
+            {
+                Console.WriteLine(this.Id);
+            }
         }
 
-        public class LifeTime
+        public class Lifeline
         {
             public string id;
             public string name;
         }
 
-        public class MessageSequence
+        public abstract class MessageSequence
+        {
+            protected string id;
+            protected string name;
+            protected string sendEvent;
+            protected string receiveEvent;
+
+        }
+
+        public class Synchronous : MessageSequence
         {
 
         }
 
-        public class Synchronous_MessageSequence : MessageSequence
-        {
-
-        }
-
-        public class Asynchronous_MessageSequence : MessageSequence
+        public class Asynchronous : MessageSequence
         {
 
         }
