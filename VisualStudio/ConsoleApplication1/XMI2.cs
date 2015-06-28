@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace TesteXMI2
 {
-    public class XMI
+    public class XMI2
     {
         public string ArquivoXmi { get; private set; }
         public XmlDocument xmlDocument = new XmlDocument();
@@ -16,56 +16,55 @@ namespace TesteXMI2
         public ArrayList Lifeline { get; private set; }
         public ArrayList Message { get; private set; }
 
-        public XMI(string arquivoXmi)
+        public XMI2(string arquivoXmi)
         {
             this.xmlDocument.Load(arquivoXmi);
-            //ownedBehavior();
+            ownedBehavior();
         }
 
-
-
-        //METHOD TO READ THE ELEMENT AND HIS ATTRIBUTES
-        private Element readElementAttributes(string readtag)
-        {
-            //CREATE THE ELEMENT OBJ
-            Element element = new Element();
-
-            foreach (XmlNode xmlNode in xmlDocument.SelectNodes(readtag))
-            {
-                //ADD OBJ'S NAME
-                element.Tag = xmlNode.Name;
-
-                //CREATE ATTR OBJ
-                Dictionary<string, string> attributes = new Dictionary<string, string>();
-
-                //READ THE ATTRIBUTES AND ADD
-                foreach (XmlAttribute attr in xmlNode.Attributes)
-                {
-                    attributes.Add(attr.Name, attr.Value); //Console.Write("{0}={1} ", attr.Name, attr.Value);
-                }
-
-                //ADD OBJ'S ATTR
-                element.AttributesElement = attributes;
-            }
-            return element;
-        }
-
-        
         private void ownedBehavior()
         {
             OwnedBehavior = new ArrayList();
             Lifeline = new ArrayList();
-            Message = new ArrayList();      
+            Message = new ArrayList();
+
+            foreach (XmlNode x in this.xmlDocument.SelectNodes("//ownedBehavior"))
+            {
+                string type = x.Attributes["xmi:type"].Value;
+                string id = x.Attributes["xmi:id"].Value;
+                string name = x.Attributes["name"].Value;
+                string visibility = x.Attributes["visibility"].Value;
+
+                OwnedBehavior.Add(new Element(type, id, name, visibility));
+
+                foreach (XmlNode n in x.ChildNodes)
+                {
+                    if (n.Name == "lifeline")
+                    {
+                        Lifeline.Add(new Element(n.Attributes["xmi:type"].Value, n.Attributes["xmi:id"].Value, n.Attributes["name"].Value, n.Attributes["visibility"].Value, n.Attributes["represents"].Value));
+                    }
+
+                    if (n.Name == "message")
+                    {
+                        Message.Add(new Element(n.Attributes["xmi:type"].Value, n.Attributes["xmi:id"].Value, n.Attributes["name"].Value, n.Attributes["messageKind"].Value, n.Attributes["messageSort"].Value, n.Attributes["sendEvent"].Value, n.Attributes["receiveEvent"].Value));
+                    }
+                }
+            }
         }
 
     }
 
     public class Element
     {
-        public string Tag { get; set; } //<Tag>
-        public Dictionary<string, string> AttributesElement { get; set; } //<Tag att1="value1" att2="value2" ... />
 
-        public Element(){}
+        public string NameElement { get; private set; }
+        public Dictionary<string, string> AttributesElement { get; private set; }
+
+        public Element(string name, Dictionary<string, string> att)
+        {
+            this.NameElement = name;
+            this.AttributesElement = att;
+        }
     }
 
     //public class Element
@@ -79,7 +78,7 @@ namespace TesteXMI2
     //    public string MessageSort { get; private set; }
     //    public string SendEvent { get; private set; }
     //    public string ReceiveEvent { get; private set; }
-        
+
     //    //Elements childs from parent element
     //    public ArrayList Childs { get; private set; }
 
