@@ -4,3 +4,9 @@ F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\Teste
 F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\obj\Debug\TesteXMI2.csprojResolveAssemblyReference.cache
 F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\obj\Debug\TesteXMI2.exe
 F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\obj\Debug\TesteXMI2.pdb
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\bin\Debug\TesteXMI2.exe.config
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\obj\Debug\TesteXMI2.exe
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\obj\Debug\TesteXMI2.pdb
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\bin\Debug\TesteXMI2.exe
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\bin\Debug\TesteXMI2.pdb
+F:\Users\Filipe\Documents\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI2\obj\Debug\TesteXMI2.csprojResolveAssemblyReference.cache

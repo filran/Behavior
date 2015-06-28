@@ -5,14 +5,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace TesteXMI2
 {
     class Program
     {
-
         static void Main(string[] args)
         {
+            string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeq_XMI2.1.xmi";
+            XMI xmi = new XMI(arquivoXmi);
+
+            foreach( Element o in xmi.OwnedBehavior ){
+                Console.WriteLine( ""+o.Name );
+                
+                foreach (Element l in xmi.Lifeline){
+                    Console.WriteLine( "\t"+l.Name );
+                }
+
+                foreach (Element m in xmi.Message)
+                {
+                    Console.WriteLine( "\t"+m.Name );
+                }
+            }
+
+
+
+            ////Declarando uma nova instancia XmlDocument
+            //XmlDocument xmlDocument = new XmlDocument();
+            //xmlDocument.Load(arquivoXmi);
+
+            //foreach (XmlNode x in xmlDocument.SelectNodes("//ownedBehavior"))
+            //{
+            //    Console.WriteLine("ownedBehavior: {0}", x.Attributes["xmi:id"].Value);
+
+            //    foreach (XmlNode nodes in x.ChildNodes )
+            //    {
+            //        if (nodes.Name == "lifeline")
+            //        {
+            //            Console.WriteLine( "\tLifeline: " + nodes.Attributes["xmi:id"].Value );
+            //        }
+            //    }
+            //}
             //Sequence seq1 = new Sequence("01","Diagrama de Sequencia 1");
 
             //Lifeline life1 = new Lifeline("01", "Object1");
@@ -36,58 +70,8 @@ namespace TesteXMI2
 
             //ArrayList msgAsync = new ArrayList();
             //msgAsync.Add(msg2);
-            //life2.addAsynchronous(msgAsync);
-
-
-            //string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\teste.xmi";
-            string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeq_XMI2.1.xmi";
-
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(arquivoXmi); //Carregando o arquivo
-
-            //Pegando elemento pelo nome da TAG
-            
-
-            //Usando foreach para imprimir na tela
-            foreach (XmlNode xn in xnList)
-            {
-               
-            }
-
-
+            //life2.addAsynchronous(msgAsync);          
 
         }
-
-
-        //Funcao Recursiva
-        //É capaz de nos retornar a referencia de qualquer nó no arquivo xml
-        //sendo descendente do no passado na funcao.
-        public static XmlNode BuscaXml(XmlNode node, String NodeName)
-        {
-            //se é o que estamos procurando, o retorna
-            if (node.Name == NodeName)
-                return node;
-            //caso este no nao possua filhos, retorne null
-            if (node.ChildNodes.Count == 0)
-                return null;
- 
-            XmlNode No_temp;
-            //para cada filho de um determinado nó.
-            foreach (XmlNode no in node.ChildNodes)
-            {
-                //inicia recursao
-                No_temp = BuscaXml(no, NodeName);
-         
-                //caso nao exista, continua a iteracao
-                if (No_temp == null)
-                    continue;
-                //caso exista, retorne para continuar a busca
-                else
-                    return No_temp;
-            }
-            //caso nao encontre...
-            return null;
-        }
-
     }
 }

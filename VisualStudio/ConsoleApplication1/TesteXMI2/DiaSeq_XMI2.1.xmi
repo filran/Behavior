@@ -4,23 +4,23 @@
 	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
 		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_D8BBFDA4_A310_4127_A906_7B20133C186C" name="Dynamic View" visibility="public">
 			<packagedElement xmi:type="uml:Collaboration" xmi:id="EAID_CB000000_DA4_A310_4127_A906_7B20133C186" name="EA_Collaboration1" visibility="public">
-				<ownedBehavior xmi:type="uml:Interaction" xmi:id="EAID_IN000000_DA4_A310_4127_A906_7B20133C186" name="EA_Interaction1" visibility="public">
-					<lifeline xmi:type="uml:Lifeline" xmi:id="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271" name="Object1" visibility="public" represents="EAID_AT000000_1278_4e43_94DE_BA70A8D0F271"/>
-					<lifeline xmi:type="uml:Lifeline" xmi:id="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7" name="Object2" visibility="public" represents="EAID_AT000000_20DC_4ab0_AC5F_9E73F253A4C7"/>
-					<lifeline xmi:type="uml:Lifeline" xmi:id="EAID_50F63715_046E_461b_98F3_AA5309D11D68" name="Object3" visibility="public" represents="EAID_AT000000_046E_461b_98F3_AA5309D11D68"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000000_1278_4e43_94DE_BA70A8D0F271" covered="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000000_20DC_4ab0_AC5F_9E73F253A4C7" covered="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000002_20DC_4ab0_AC5F_9E73F253A4C7" covered="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000000_046E_461b_98F3_AA5309D11D68" covered="EAID_50F63715_046E_461b_98F3_AA5309D11D68"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000001_20DC_4ab0_AC5F_9E73F253A4C7" covered="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000001_1278_4e43_94DE_BA70A8D0F271" covered="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000001_046E_461b_98F3_AA5309D11D68" covered="EAID_50F63715_046E_461b_98F3_AA5309D11D68"/>
-					<fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000002_1278_4e43_94DE_BA70A8D0F271" covered="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271"/>
-					<message xmi:type="uml:Message" xmi:id="EAID_F2D9C665_4F6F_4bdc_BF10_B1A44AD14F18" name="msg1" messageKind="complete" messageSort="synchCall" sendEvent="EAID_FR000000_1278_4e43_94DE_BA70A8D0F271" receiveEvent="EAID_FR000000_20DC_4ab0_AC5F_9E73F253A4C7"/>
-					<message xmi:type="uml:Message" xmi:id="EAID_BA5CEBF8_9F38_4348_956D_9F6E7C00F874" name="msg2" messageKind="complete" messageSort="asynchCall" sendEvent="EAID_FR000002_20DC_4ab0_AC5F_9E73F253A4C7" receiveEvent="EAID_FR000000_046E_461b_98F3_AA5309D11D68"/>
-					<message xmi:type="uml:Message" xmi:id="EAID_288E6521_FBE3_4edf_AC11_D5073FB8FB1E" name="msg3" messageKind="complete" messageSort="asynchCall" sendEvent="EAID_FR000001_20DC_4ab0_AC5F_9E73F253A4C7" receiveEvent="EAID_FR000001_1278_4e43_94DE_BA70A8D0F271"/>
-					<message xmi:type="uml:Message" xmi:id="EAID_94B03F94_6B2E_4738_A657_3E5D16D8D666" name="msg4" messageKind="complete" messageSort="synchCall" sendEvent="EAID_FR000001_046E_461b_98F3_AA5309D11D68" receiveEvent="EAID_FR000002_1278_4e43_94DE_BA70A8D0F271"/>
-				</ownedBehavior>
+        <ownedBehavior xmi:type="uml:Interaction" xmi:id="EAID_IN000000_DA4_A310_4127_A906_7B20133C186" name="EA_Interaction1" visibility="public">
+          <lifeline xmi:type="uml:Lifeline" xmi:id="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271" name="Object1" visibility="public" represents="EAID_AT000000_1278_4e43_94DE_BA70A8D0F271"/>
+          <lifeline xmi:type="uml:Lifeline" xmi:id="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7" name="Object2" visibility="public" represents="EAID_AT000000_20DC_4ab0_AC5F_9E73F253A4C7"/>
+          <lifeline xmi:type="uml:Lifeline" xmi:id="EAID_50F63715_046E_461b_98F3_AA5309D11D68" name="Object3" visibility="public" represents="EAID_AT000000_046E_461b_98F3_AA5309D11D68"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000000_1278_4e43_94DE_BA70A8D0F271" covered="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000000_20DC_4ab0_AC5F_9E73F253A4C7" covered="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000002_20DC_4ab0_AC5F_9E73F253A4C7" covered="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000000_046E_461b_98F3_AA5309D11D68" covered="EAID_50F63715_046E_461b_98F3_AA5309D11D68"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000001_20DC_4ab0_AC5F_9E73F253A4C7" covered="EAID_8437502C_20DC_4ab0_AC5F_9E73F253A4C7"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000001_1278_4e43_94DE_BA70A8D0F271" covered="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000001_046E_461b_98F3_AA5309D11D68" covered="EAID_50F63715_046E_461b_98F3_AA5309D11D68"/>
+          <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="EAID_FR000002_1278_4e43_94DE_BA70A8D0F271" covered="EAID_1C779935_1278_4e43_94DE_BA70A8D0F271"/>
+          <message xmi:type="uml:Message" xmi:id="EAID_F2D9C665_4F6F_4bdc_BF10_B1A44AD14F18" name="msg1" messageKind="complete" messageSort="synchCall" sendEvent="EAID_FR000000_1278_4e43_94DE_BA70A8D0F271" receiveEvent="EAID_FR000000_20DC_4ab0_AC5F_9E73F253A4C7"/>
+          <message xmi:type="uml:Message" xmi:id="EAID_BA5CEBF8_9F38_4348_956D_9F6E7C00F874" name="msg2" messageKind="complete" messageSort="asynchCall" sendEvent="EAID_FR000002_20DC_4ab0_AC5F_9E73F253A4C7" receiveEvent="EAID_FR000000_046E_461b_98F3_AA5309D11D68"/>
+          <message xmi:type="uml:Message" xmi:id="EAID_288E6521_FBE3_4edf_AC11_D5073FB8FB1E" name="msg3" messageKind="complete" messageSort="asynchCall" sendEvent="EAID_FR000001_20DC_4ab0_AC5F_9E73F253A4C7" receiveEvent="EAID_FR000001_1278_4e43_94DE_BA70A8D0F271"/>
+          <message xmi:type="uml:Message" xmi:id="EAID_94B03F94_6B2E_4738_A657_3E5D16D8D666" name="msg4" messageKind="complete" messageSort="synchCall" sendEvent="EAID_FR000001_046E_461b_98F3_AA5309D11D68" receiveEvent="EAID_FR000002_1278_4e43_94DE_BA70A8D0F271"/>
+        </ownedBehavior>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_AT000000_1278_4e43_94DE_BA70A8D0F271"/>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_AT000000_20DC_4ab0_AC5F_9E73F253A4C7"/>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_AT000000_046E_461b_98F3_AA5309D11D68"/>
