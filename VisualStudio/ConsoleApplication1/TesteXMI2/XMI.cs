@@ -9,6 +9,11 @@ namespace TesteXMI2
 {
     public class XMI
     {
+        //TAGS IN XMI
+        public const string OWNEDBEHAVIOR = "ownedBehavior";
+        public const string LIFELINE = "lifeline";
+        public const string MESSAGE = "message";
+            
         public string ArquivoXmi { get; private set; }
         public XmlDocument xmlDocument = new XmlDocument();
 
@@ -18,20 +23,33 @@ namespace TesteXMI2
 
         public XMI(string arquivoXmi)
         {
+            this.OwnedBehavior = new ArrayList();
+            this.Lifeline = new ArrayList();
+            this.Message = new ArrayList();
+              
             this.xmlDocument.Load(arquivoXmi);
-            //ownedBehavior();
+
+            readElement("/" + OWNEDBEHAVIOR);
+            readElement("/" + OWNEDBEHAVIOR + "/" + LIFELINE);
+            readElement("/" + OWNEDBEHAVIOR + "/" + MESSAGE);
         }
 
 
 
         //METHOD TO READ THE ELEMENT AND HIS ATTRIBUTES
-        private Element readElementAttributes(string readtag)
+        private ArrayList readElementAttributes(string readtag)
         {
-            //CREATE THE ELEMENT OBJ
-            Element element = new Element();
+            //REPLACE FROM / TO //
+            readtag = replaceBar(readtag);
+
+            //CREATE ARRAYLIST WITH ELEMENTS
+            ArrayList elementList = new ArrayList();
 
             foreach (XmlNode xmlNode in xmlDocument.SelectNodes(readtag))
             {
+                //CREATE THE ELEMENT OBJ
+                Element element = new Element();
+
                 //ADD OBJ'S NAME
                 element.Tag = xmlNode.Name;
 
@@ -46,19 +64,53 @@ namespace TesteXMI2
 
                 //ADD OBJ'S ATTR
                 element.AttributesElement = attributes;
+
+                elementList.Add(element);
             }
-            return element;
+            return elementList;
         }
 
-        
-        private void ownedBehavior()
+
+        //READ THE ELEMENTS AND ADD IN YOUR ARRAYLIST
+        private void readElement( string tag )
         {
-            OwnedBehavior = new ArrayList();
-            Lifeline = new ArrayList();
-            Message = new ArrayList();      
+            ArrayList tagList = splitTags(tag);
+            int count = tagList.Count;
+            int lastIndex = count - 1;
+            string lastPosition = tagList[lastIndex].ToString();
+
+            switch (lastPosition)
+            {
+                case OWNEDBEHAVIOR:     foreach (Element e in readElementAttributes(tag)) { this.OwnedBehavior.Add(e); } break;
+                case LIFELINE:          foreach (Element e in readElementAttributes(tag)) { this.Lifeline.Add(e); } break;
+                case MESSAGE:           foreach (Element e in readElementAttributes(tag)) { this.Message.Add(e); } break;
+            }
         }
 
-    }
+
+        //BREAK THE PATH OF TAG
+        private ArrayList splitTags(string tag)
+        {
+            ArrayList list = new ArrayList();
+            
+            string[] split = tag.Split(new Char[] { '/' });
+            foreach (string s in split)
+            {
+                list.Add(s);
+            }
+
+            list.RemoveAt(0);
+
+            return list;
+        }
+
+        //REPLACE FROM / TO //
+        private string replaceBar(string tags)
+        {
+            return tags.Replace("/", "//");
+        }
+    
+    }//END CLASS XMI
 
     public class Element
     {
@@ -66,58 +118,7 @@ namespace TesteXMI2
         public Dictionary<string, string> AttributesElement { get; set; } //<Tag att1="value1" att2="value2" ... />
 
         public Element(){}
-    }
-
-    //public class Element
-    //{
-    //    public string Xmi_type { get; private set; }
-    //    public string Xmi_id { get; private set; }
-    //    public string Name { get; private set; }
-    //    public string Visibility { get; private set; }
-    //    public string Represents { get; private set; }
-    //    public string MessageKind { get; private set; }
-    //    public string MessageSort { get; private set; }
-    //    public string SendEvent { get; private set; }
-    //    public string ReceiveEvent { get; private set; }
-        
-    //    //Elements childs from parent element
-    //    public ArrayList Childs { get; private set; }
-
-    //    public Element()
-    //    {
-
-    //    }
-
-    //    //<ownedBehavior>
-    //    public Element(string xmi_type, string xmi_id, string name, string visibility)
-    //    {
-    //        this.Xmi_type = xmi_type;
-    //        this.Xmi_id = xmi_id;
-    //        this.Name = name;
-    //        this.Visibility = visibility;
-    //    }
-
-    //    //<lifeline>
-    //    public Element(string xmi_type, string xmi_id, string name, string visibility, string represents)
-    //    {
-    //        this.Xmi_type = xmi_type;
-    //        this.Xmi_id = xmi_id;
-    //        this.Name = name;
-    //        this.Visibility = visibility;
-    //        this.Represents = represents;
-    //    }
-
-    //    //<message>
-    //    public Element(string xmi_type, string xmi_id, string name, string messageKind, string messageSort, string sendEvent, string receiveEvent)
-    //    {
-    //        this.Xmi_type = xmi_type;
-    //        this.Xmi_id = xmi_id;
-    //        this.Name = name;
-    //        this.MessageKind = messageKind;
-    //        this.MessageSort = messageSort;
-    //        this.SendEvent = sendEvent;
-    //        this.ReceiveEvent = receiveEvent;
-    //    }
-    //}
+    
+    }//END CLASS ELEMENT
 
 }
