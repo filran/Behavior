@@ -11,43 +11,65 @@ namespace TesteXMI2
 {
     class Program
     {
+        public static void loopChild(XmlNode node)
+        {
+            if( node.HasChildNodes )
+            {
+                foreach( XmlNode x in node.ChildNodes )
+                {
+                    Console.WriteLine( x.Name );
+                    loopChild( x );
+                }
+            }
+        }
+
 
         static void Main(string[] args)
         {
             Dictionary<ArrayList, ArrayList> diagrams = new Dictionary<ArrayList, ArrayList>();
             
-            string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
-            //string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
+            //string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
+            string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
 
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(arquivoXmi);
+            XMI xmi = new XMI(arquivoXmi);
+            
 
-            XmlNodeList d = xmlDocument.SelectNodes("//diagrams");
+            //XmlDocument xmlDocument = new XmlDocument();
+            //xmlDocument.Load(arquivoXmi);
 
-            //diagrams
-            foreach( XmlNode c in d ){
-                Console.WriteLine( c.Name );
-                Console.WriteLine(c.ChildNodes.Count);
+            //XmlNodeList d = xmlDocument.SelectNodes("//ownedBehavior");
+
+            //foreach( XmlNode dd in d )
+            //{
+            //    loopChild(dd);
+            //}
+
+
+            ////diagrams
+            //foreach (XmlNode c in d)
+            //{
+            //    Console.WriteLine(c.ChildNodes.Count + " " + c.Name);
 
                 //diagram
-                foreach( XmlNode cc in c.ChildNodes ){
-                    Console.WriteLine( "\t"+cc.Name );
+                //foreach (XmlNode cc in c.ChildNodes)
+                //{
+                //    Console.WriteLine("\t" + cc.Name);
 
-                    //tags
-                    foreach (XmlNode ccc in cc.ChildNodes)
-                    {
-                        Console.WriteLine("\t\t"+ccc.Name);
+                //    //tags
+                //    foreach (XmlNode ccc in cc.ChildNodes)
+                //    {
+                //        Console.WriteLine("\t\t" + ccc.Name);
 
-                        if( ccc.Name == "elements" )
-                        {
-                            foreach( XmlNode e in ccc.ChildNodes )
-                            {
-                                Console.WriteLine("\t\t\t" + e.Name);
-                            }
-                        }
-                    }
-                }
-            }
+                //        if (ccc.Name == "elements")
+                //        {
+                //            foreach (XmlNode e in ccc.ChildNodes)
+                //            {
+                //                Console.WriteLine("\t\t\t" + e.Name);
+                //            }
+                //        }
+                //    }
+                //}
+            //}
 
 
             //foreach (XmlNode i in root.ChildNodes)

@@ -12,7 +12,9 @@ namespace TesteXMI2
         //TAGS IN XMI
         public const string OWNEDBEHAVIOR = "ownedBehavior";
         public const string LIFELINE = "lifeline";
+        public const string FRAGMENT = "fragment";
         public const string MESSAGE = "message";
+        public const string DIAGRAMS = "diagrams";
         public const string DIAGRAM = "diagram";
         public const string ELEMENTS = "elements";
         public const string ELEMENT = "element";
@@ -22,17 +24,20 @@ namespace TesteXMI2
 
         public ArrayList OwnedBehavior { get; private set; }
         public ArrayList Lifeline { get; private set; }
+        public ArrayList Fragment { get; private set; }
         public ArrayList Message { get; private set; }
 
-                        //Diagram   Element
+                        //<Diagram> <Element>
         public Dictionary<ArrayList,ArrayList> Diagrams { get; private set; }
         public ArrayList Diagram { get; private set; }
         //public ArrayList Element { get; private set; }
+
 
         public XMI(string arquivoXmi)
         {
             this.OwnedBehavior = new ArrayList();
             this.Lifeline = new ArrayList();
+            this.Fragment = new ArrayList();
             this.Message = new ArrayList();
 
             this.Diagrams = new Dictionary<ArrayList, ArrayList>();
@@ -41,109 +46,144 @@ namespace TesteXMI2
               
             this.xmlDocument.Load(arquivoXmi);
 
-            readElement("/" + OWNEDBEHAVIOR);
-            readElement("/" + OWNEDBEHAVIOR + "/" + LIFELINE);
-            readElement("/" + OWNEDBEHAVIOR + "/" + MESSAGE);
-            
-            readElement("/" + DIAGRAM);
-            //readElement("/" + DIAGRAM + "/" + ELEMENTS + "/" + ELEMENT);
+            readTag(xmlDocument.SelectNodes("//"+OWNEDBEHAVIOR));
+            readTag(xmlDocument.SelectNodes("//" + DIAGRAMS));
+
+
+
+            //TESTE
+            //foreach( Element o in OwnedBehavior )
+            //{
+            //    Console.Write( "<" + o.Tag + " " );
+                
+            //    foreach( var oo in o.AttributesElement )
+            //    {
+            //        Console.Write( oo.Key +"="+ oo.Value +" ");
+            //    }
+            //    Console.WriteLine(" />");
+            //}
+
+            //foreach (Element l in Lifeline)
+            //{
+            //    Console.Write("\t<" + l.Tag + " ");
+
+            //    foreach (var ll in l.AttributesElement)
+            //    {
+            //        Console.Write(ll.Key + "=" + ll.Value + " ");
+            //    }
+            //    Console.WriteLine(" />");
+            //}
+
+            //foreach (Element e in Fragment)
+            //{
+            //    Console.Write("\t<" + e.Tag + " ");
+
+            //    foreach (var ee in e.AttributesElement)
+            //    {
+            //        Console.Write(ee.Key + "=" + ee.Value + " ");
+            //    }
+            //    Console.WriteLine(" />");
+            //}
+
+            //foreach (Element e in Message)
+            //{
+            //    Console.Write("\t<" + e.Tag + " ");
+
+            //    foreach (var ee in e.AttributesElement)
+            //    {
+            //        Console.Write(ee.Key + "=" + ee.Value + " ");
+            //    }
+            //    Console.WriteLine(" />");
+            //}
+
+            foreach (Element e in Diagram)
+            {
+                Console.Write("<" + e.Tag + " ");
+
+                foreach (var ee in e.AttributesElement)
+                {
+                    Console.Write(ee.Key + "=" + ee.Value + " ");
+                }
+                Console.WriteLine(" />");
+            }
+
+
+        }
+        
+        //READ THE FIRST NODE
+        private void readTag( XmlNodeList nodeList )
+        {
+            foreach (XmlNode node in nodeList)
+            {
+                //Console.WriteLine("Parant:" + node.ParentNode.ParentNode.ParentNode.Name );
+                Dictionary<string,string>  attr = readAttributes( node );
+                createElement( node , attr );
+                loopChild(node);
+            }
         }
 
-
-        //READ THE ELEMENTS AND ADD IN YOUR ARRAYLIST
-        private void readElement(string tag)
+        //READ THE CHILD NODES
+        private void loopChild(XmlNode node)
         {
-            ArrayList tagList = splitTags(tag);
-            int count = tagList.Count;
-            int lastIndex = count - 1;
-            string lastPosition = tagList[lastIndex].ToString();
-
-            ArrayList element = new ArrayList();
-
-            switch (lastPosition)
+            if (node.HasChildNodes)
             {
-                case OWNEDBEHAVIOR:     foreach (Element e in readElementAttributes(tag)) { this.OwnedBehavior.Add(e); } break;
-                case LIFELINE:          foreach (Element e in readElementAttributes(tag)) { this.Lifeline.Add(e); } break;
-                case MESSAGE:           foreach (Element e in readElementAttributes(tag)) { this.Message.Add(e); } break;
-                //case DIAGRAM:           foreach (Element e in readElementAttributes(tag)) { this.Diagram.Add(e); } break;
-                case ELEMENT:           foreach (Element e in readElementAttributes(tag)) { element.Add(e); } break;
+                foreach (XmlNode x in node.ChildNodes)
+                {
+                    Dictionary<string, string> attr = readAttributes(x);
+                    createElement(x, attr);
+                    loopChild(x);
+                }
+            }
+        }
 
+        //READ ATTRIBUTES
+        private Dictionary<string,string> readAttributes( XmlNode node )
+        {
+            Dictionary<string,string> at = new Dictionary<string,string>();
+
+            foreach (XmlAttribute attr in node.Attributes)
+            {
+                //resp+= " " + attr.Name + "=" + attr.Value + " ";
+                at.Add( attr.Name , attr.Value );
+            }
+            return at;
+        }
+
+        //CREATE OBJ ELEMENT
+        private void createElement( XmlNode tag , Dictionary<string,string> attr)
+        {
+            switch( tag.Name )
+            {
+                case OWNEDBEHAVIOR:
+                    this.OwnedBehavior.Add(new Element(tag.Name,attr));
+                    break;
+                case LIFELINE:
+                    this.Lifeline.Add(new Element(tag.Name,attr));
+                    break;
+                case FRAGMENT:
+                    this.Fragment.Add(new Element(tag.Name,attr));
+                    break;
+                case MESSAGE:
+                    this.Message.Add(new Element(tag.Name,attr));
+                    break;
                 case DIAGRAM:
-                    foreach (Element e in readElementAttributes(tag))
-                    {
-                        this.Diagram.Add(e);
-
-                    }
+                    this.Diagram.Add(new Element(tag.Name, attr));
                     break;
             }
-
         }
 
-
-        //METHOD TO READ THE ELEMENT AND HIS ATTRIBUTES
-        private ArrayList readElementAttributes(string readtag)
-        {
-            //REPLACE FROM / TO //
-            readtag = replaceBar(readtag);
-
-            //CREATE ARRAYLIST WITH ELEMENTS
-            ArrayList elementList = new ArrayList();
-
-            foreach (XmlNode xmlNode in xmlDocument.SelectNodes(readtag))
-            {
-                //CREATE THE ELEMENT OBJ
-                Element element = new Element();
-
-                //ADD OBJ'S NAME
-                element.Tag = xmlNode.Name;
-
-                //CREATE ATTR OBJ
-                Dictionary<string, string> attributes = new Dictionary<string, string>();
-
-                //READ THE ATTRIBUTES AND ADD
-                foreach (XmlAttribute attr in xmlNode.Attributes)
-                {
-                    attributes.Add(attr.Name, attr.Value); //Console.Write("{0}={1} ", attr.Name, attr.Value);
-                }
-
-                //ADD OBJ'S ATTR
-                element.AttributesElement = attributes;
-
-                elementList.Add(element);
-            }
-            return elementList;
-        }
-
-        //BREAK THE PATH OF TAG
-        private ArrayList splitTags(string tag)
-        {
-            ArrayList list = new ArrayList();
-            
-            string[] split = tag.Split(new Char[] { '/' });
-            foreach (string s in split)
-            {
-                list.Add(s);
-            }
-
-            list.RemoveAt(0);
-
-            return list;
-        }
-
-        //REPLACE FROM / TO //
-        private string replaceBar(string tags)
-        {
-            return tags.Replace("/", "//");
-        }
     
     }//END CLASS XMI
 
     public class Element
     {
-        public string Tag { get; set; } //<Tag>
-        public Dictionary<string, string> AttributesElement { get; set; } //<Tag att1="value1" att2="value2" ... />
+        public string Tag { get; private set; } //<Tag>
+        public Dictionary<string, string> AttributesElement { get; private set; } //<Tag att1="value1" att2="value2" ... />
 
-        public Element(){}
+        public Element( string tag , Dictionary<string, string> attr ){
+            this.Tag = tag;
+            this.AttributesElement = attr;
+        }
     
     }//END CLASS ELEMENT
 
