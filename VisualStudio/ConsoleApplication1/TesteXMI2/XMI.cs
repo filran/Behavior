@@ -28,7 +28,8 @@ namespace TesteXMI2
         public ArrayList Message { get; private set; }
 
                         //<Diagram> <Element>
-        public Dictionary<ArrayList,ArrayList> Diagrams { get; private set; }
+        //public Dictionary<Element, ArrayList> Diagrams { get; private set; }
+        public Object[,] Diagrams { get; private set; }
         public ArrayList Diagram { get; private set; }
         //public ArrayList Element { get; private set; }
 
@@ -40,7 +41,7 @@ namespace TesteXMI2
             this.Fragment = new ArrayList();
             this.Message = new ArrayList();
 
-            this.Diagrams = new Dictionary<ArrayList, ArrayList>();
+            //this.Diagrams = new Dictionary<Element, ArrayList>();
             this.Diagram = new ArrayList();
             //this.Element = new ArrayList();
               
@@ -49,6 +50,9 @@ namespace TesteXMI2
             readTag(xmlDocument.SelectNodes("//"+OWNEDBEHAVIOR));
             readTag(xmlDocument.SelectNodes("//" + DIAGRAMS));
 
+            foreach( Element e in Diagram){
+                Console.WriteLine( e.Tag );
+            }
 
 
             //TESTE
@@ -96,16 +100,16 @@ namespace TesteXMI2
             //    Console.WriteLine(" />");
             //}
 
-            foreach (Element e in Diagram)
-            {
-                Console.Write("<" + e.Tag + " ");
+            //foreach (Element e in Diagram)
+            //{
+            //    Console.Write("<" + e.Tag + " ");
 
-                foreach (var ee in e.AttributesElement)
-                {
-                    Console.Write(ee.Key + "=" + ee.Value + " ");
-                }
-                Console.WriteLine(" />");
-            }
+            //    foreach (var ee in e.AttributesElement)
+            //    {
+            //        Console.Write(ee.Key + "=" + ee.Value + " ");
+            //    }
+            //    Console.WriteLine(" />");
+            //}
 
 
         }
@@ -127,10 +131,34 @@ namespace TesteXMI2
         {
             if (node.HasChildNodes)
             {
+                ArrayList elementsDiagram = new ArrayList();
+                string idParentDiagram = "";
+
                 foreach (XmlNode x in node.ChildNodes)
                 {
                     Dictionary<string, string> attr = readAttributes(x);
                     createElement(x, attr);
+
+                    //IDENTIFY THE ELEMENTS AND ADD IN VAR
+                    switch( x.Name )
+                    {
+                        case ELEMENT:
+                            idParentDiagram = x.ParentNode.ParentNode.Attributes["xmi:id"].Value;
+                            elementsDiagram.Add( new Element(x.Name,attr) );
+                            break;
+                    }
+
+                    int countDiagram = this.Diagram.Count;
+                    Object[,] Diagrams = new Object[countDiagram, 3];
+
+                    foreach (Element e in this.Diagram)
+                    {
+                        if (e.AttributesElement["xmi:id"] == idParentDiagram)
+                        {
+                            //this.Diagrams[0,0] = ""; 
+                        }
+                    }
+
                     loopChild(x);
                 }
             }
@@ -149,7 +177,7 @@ namespace TesteXMI2
             return at;
         }
 
-        //CREATE OBJ ELEMENT
+        //CREATE OBJ ELEMENT AND ADD YOUR ARRAYLIST OR DICTIONARY
         private void createElement( XmlNode tag , Dictionary<string,string> attr)
         {
             switch( tag.Name )

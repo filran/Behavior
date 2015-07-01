@@ -27,12 +27,14 @@ namespace TesteXMI2
         static void Main(string[] args)
         {
             Dictionary<ArrayList, ArrayList> diagrams = new Dictionary<ArrayList, ArrayList>();
-            
+
             //string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
             string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
 
-            XMI xmi = new XMI(arquivoXmi);
+            //XMI xmi = new XMI(arquivoXmi);
+
             
+
 
             //XmlDocument xmlDocument = new XmlDocument();
             //xmlDocument.Load(arquivoXmi);
@@ -50,25 +52,25 @@ namespace TesteXMI2
             //{
             //    Console.WriteLine(c.ChildNodes.Count + " " + c.Name);
 
-                //diagram
-                //foreach (XmlNode cc in c.ChildNodes)
-                //{
-                //    Console.WriteLine("\t" + cc.Name);
+            //diagram
+            //foreach (XmlNode cc in c.ChildNodes)
+            //{
+            //    Console.WriteLine("\t" + cc.Name);
 
-                //    //tags
-                //    foreach (XmlNode ccc in cc.ChildNodes)
-                //    {
-                //        Console.WriteLine("\t\t" + ccc.Name);
+            //    //tags
+            //    foreach (XmlNode ccc in cc.ChildNodes)
+            //    {
+            //        Console.WriteLine("\t\t" + ccc.Name);
 
-                //        if (ccc.Name == "elements")
-                //        {
-                //            foreach (XmlNode e in ccc.ChildNodes)
-                //            {
-                //                Console.WriteLine("\t\t\t" + e.Name);
-                //            }
-                //        }
-                //    }
-                //}
+            //        if (ccc.Name == "elements")
+            //        {
+            //            foreach (XmlNode e in ccc.ChildNodes)
+            //            {
+            //                Console.WriteLine("\t\t\t" + e.Name);
+            //            }
+            //        }
+            //    }
+            //}
             //}
 
 
@@ -90,7 +92,7 @@ namespace TesteXMI2
             //    }
             //    Console.WriteLine("/>"); 
             //}
-               
+
             //ArrayList l = xmi.Lifeline;
             //foreach (Element ll in l)
             //{
