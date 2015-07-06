@@ -47,11 +47,12 @@ namespace TesteXMI2
               
             this.xmlDocument.Load(arquivoXmi);
 
-            readTag(xmlDocument.SelectNodes("//"+OWNEDBEHAVIOR));
+            readTag(xmlDocument.SelectNodes("//" + OWNEDBEHAVIOR));
             readTag(xmlDocument.SelectNodes("//" + DIAGRAMS));
 
-            foreach( Element e in Diagram){
-                Console.WriteLine( e.Tag );
+            foreach (Element e in Diagram)
+            {
+                Console.WriteLine(e.Tag);
             }
 
 

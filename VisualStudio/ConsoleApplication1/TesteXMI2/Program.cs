@@ -33,7 +33,30 @@ namespace TesteXMI2
 
             //XMI xmi = new XMI(arquivoXmi);
 
+            Object[,] array = new Object[2,1];
+            Dictionary<string,string> tags = new Dictionary<string,string>();
+            tags.Add("01","um");
+            tags.Add("02","dois");
+            tags.Add("03","tres");
+
+            array[0, 0] = tags;
+            array[1, 0] = tags;
             
+            foreach( var a in array )
+            {
+                foreach( var t in tags )
+                {
+                    Console.WriteLine( t.Key );
+                }
+            }
+
+
+
+
+            
+
+
+
 
 
             //XmlDocument xmlDocument = new XmlDocument();
