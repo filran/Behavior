@@ -31,24 +31,28 @@ namespace TesteXMI2
             //string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
             string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
 
-            //XMI xmi = new XMI(arquivoXmi);
+            XMI xmi = new XMI(arquivoXmi);
 
-            Object[,] array = new Object[2,1];
-            Dictionary<string,string> tags = new Dictionary<string,string>();
-            tags.Add("01","um");
-            tags.Add("02","dois");
-            tags.Add("03","tres");
-
-            array[0, 0] = tags;
-            array[1, 0] = tags;
             
-            foreach( var a in array )
-            {
-                foreach( var t in tags )
-                {
-                    Console.WriteLine( t.Key );
-                }
-            }
+            //Dictionary<string, ArrayList> teste = new Dictionary<string, ArrayList>();
+            //teste.Add("UM", new ArrayList() { "a","b"});
+
+            //Object[,] array = new Object[2,1];
+            //Dictionary<string,string> tags = new Dictionary<string,string>();
+            //tags.Add("01","um");
+            //tags.Add("02","dois");
+            //tags.Add("03","tres");
+
+            //array[0, 0] = tags;
+            //array[1, 0] = tags;
+            
+            //foreach( var a in array )
+            //{
+            //    foreach( var t in tags )
+            //    {
+            //        Console.WriteLine( t.Key );
+            //    }
+            //}
 
 
 

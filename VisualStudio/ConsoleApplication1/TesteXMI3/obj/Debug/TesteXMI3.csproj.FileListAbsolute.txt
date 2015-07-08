@@ -1,1 +1,5 @@
 F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI3\bin\Debug\TesteXMI3.exe.config
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI3\bin\Debug\TesteXMI3.exe
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI3\bin\Debug\TesteXMI3.pdb
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI3\obj\Debug\TesteXMI3.exe
+F:\Documentos\Programacao\GitHub\Behavior\VisualStudio\ConsoleApplication1\TesteXMI3\obj\Debug\TesteXMI3.pdb

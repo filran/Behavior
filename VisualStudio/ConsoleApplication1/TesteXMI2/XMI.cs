@@ -18,6 +18,7 @@ namespace TesteXMI2
         public const string DIAGRAM = "diagram";
         public const string ELEMENTS = "elements";
         public const string ELEMENT = "element";
+        public const string EXTENSION = "Extension";
             
         public string ArquivoXmi { get; private set; }
         public XmlDocument xmlDocument = new XmlDocument();
@@ -27,11 +28,13 @@ namespace TesteXMI2
         public ArrayList Fragment { get; private set; }
         public ArrayList Message { get; private set; }
 
-                        //<Diagram> <Element>
-        //public Dictionary<Element, ArrayList> Diagrams { get; private set; }
-        public Object[,] Diagrams { get; private set; }
-        public ArrayList Diagram { get; private set; }
-        //public ArrayList Element { get; private set; }
+        /* Example of the Digrams
+         * 
+         * Digrams.Add( EAID_C5A4346A_C4D2_4a24_BDFB_CB31D97D8BDC , new ArrayList(){ new Element("tag", Atributos) , new Element("tag", Atributos) ,...} );
+         * 
+         */
+        public Dictionary<string, ArrayList > Diagrams { get; private set; }
+        public ArrayList Element { get; private set; }
 
 
         public XMI(string arquivoXmi)
@@ -40,78 +43,40 @@ namespace TesteXMI2
             this.Lifeline = new ArrayList();
             this.Fragment = new ArrayList();
             this.Message = new ArrayList();
-
-            //this.Diagrams = new Dictionary<Element, ArrayList>();
-            this.Diagram = new ArrayList();
-            //this.Element = new ArrayList();
+            this.Diagrams = new Dictionary<string, ArrayList>();
+            this.Element = new ArrayList();
               
             this.xmlDocument.Load(arquivoXmi);
 
             readTag(xmlDocument.SelectNodes("//" + OWNEDBEHAVIOR));
-            readTag(xmlDocument.SelectNodes("//" + DIAGRAMS));
+            readTag(xmlDocument.SelectNodes("//" + DIAGRAM));
+            readTag(xmlDocument.SelectNodes("//" + ELEMENTS));
 
-            foreach (Element e in Diagram)
+            //SHOW DIAGRAMS
+            //foreach (var d in Diagrams)
+            //{
+            //    Console.WriteLine(d.Key);
+            //    foreach (Element dd in d.Value)
+            //    {
+            //        Console.Write(dd.Tag + " ");
+            //        foreach (var ddd in dd.AttributesElement)
+            //        {
+            //            Console.WriteLine(ddd.Key + "=" + ddd.Value);
+            //        }
+            //    }
+            //    Console.WriteLine("\n");
+            //}
+
+            //SHOW ELEMENTS
+            foreach(Element e in Element)
             {
-                Console.WriteLine(e.Tag);
+                Console.Write( e.Tag + " ");
+
+                foreach (var a in e.AttributesElement)
+                {
+                    //Console.WriteLine( a.Key +"="+ a.Value);
+                }
             }
-
-
-            //TESTE
-            //foreach( Element o in OwnedBehavior )
-            //{
-            //    Console.Write( "<" + o.Tag + " " );
-                
-            //    foreach( var oo in o.AttributesElement )
-            //    {
-            //        Console.Write( oo.Key +"="+ oo.Value +" ");
-            //    }
-            //    Console.WriteLine(" />");
-            //}
-
-            //foreach (Element l in Lifeline)
-            //{
-            //    Console.Write("\t<" + l.Tag + " ");
-
-            //    foreach (var ll in l.AttributesElement)
-            //    {
-            //        Console.Write(ll.Key + "=" + ll.Value + " ");
-            //    }
-            //    Console.WriteLine(" />");
-            //}
-
-            //foreach (Element e in Fragment)
-            //{
-            //    Console.Write("\t<" + e.Tag + " ");
-
-            //    foreach (var ee in e.AttributesElement)
-            //    {
-            //        Console.Write(ee.Key + "=" + ee.Value + " ");
-            //    }
-            //    Console.WriteLine(" />");
-            //}
-
-            //foreach (Element e in Message)
-            //{
-            //    Console.Write("\t<" + e.Tag + " ");
-
-            //    foreach (var ee in e.AttributesElement)
-            //    {
-            //        Console.Write(ee.Key + "=" + ee.Value + " ");
-            //    }
-            //    Console.WriteLine(" />");
-            //}
-
-            //foreach (Element e in Diagram)
-            //{
-            //    Console.Write("<" + e.Tag + " ");
-
-            //    foreach (var ee in e.AttributesElement)
-            //    {
-            //        Console.Write(ee.Key + "=" + ee.Value + " ");
-            //    }
-            //    Console.WriteLine(" />");
-            //}
-
 
         }
         
@@ -132,34 +97,41 @@ namespace TesteXMI2
         {
             if (node.HasChildNodes)
             {
-                ArrayList elementsDiagram = new ArrayList();
-                string idParentDiagram = "";
-
                 foreach (XmlNode x in node.ChildNodes)
                 {
                     Dictionary<string, string> attr = readAttributes(x);
                     createElement(x, attr);
 
-                    //IDENTIFY THE ELEMENTS AND ADD IN VAR
-                    switch( x.Name )
-                    {
-                        case ELEMENT:
-                            idParentDiagram = x.ParentNode.ParentNode.Attributes["xmi:id"].Value;
-                            elementsDiagram.Add( new Element(x.Name,attr) );
-                            break;
-                    }
-
-                    int countDiagram = this.Diagram.Count;
-                    Object[,] Diagrams = new Object[countDiagram, 3];
-
-                    foreach (Element e in this.Diagram)
-                    {
-                        if (e.AttributesElement["xmi:id"] == idParentDiagram)
+                    //SALVE CHILDS' DIAGRAM ///////////////////////////////////////////////////
+                    string id_diagram = "";
+                    if (x.ParentNode.Name == DIAGRAM || x.ParentNode.ParentNode.Name == DIAGRAM)
+                    {                        
+                        if( x.ParentNode.Name == DIAGRAM  )
                         {
-                            //this.Diagrams[0,0] = ""; 
+                            id_diagram = x.ParentNode.Attributes["xmi:id"].Value;
                         }
-                    }
+                        else if (x.ParentNode.ParentNode.Name == DIAGRAM)
+                        {
+                            id_diagram = x.ParentNode.ParentNode.Attributes["xmi:id"].Value;
+                        }
 
+                        foreach( var d in this.Diagrams )
+                        {
+                            if (d.Key == id_diagram)
+                            {
+                                d.Value.Add( new Element(x.Name,attr) );
+                            }
+                        }
+                    }//////////////////////////////////////////////////////////////////////////
+
+                    //SALVE CHILDS'S ELEMENTS /////////////////////////////////////////////////////////
+                    if( x.ParentNode.Name == EXTENSION && x.FirstChild.Name == ELEMENT )
+                    {
+                        Console.WriteLine("goooooooooooooooollllllllllllllllll");
+
+
+                    }//////////////////////////////////////////////////////////////////////////////////
+                    
                     loopChild(x);
                 }
             }
@@ -196,8 +168,12 @@ namespace TesteXMI2
                     this.Message.Add(new Element(tag.Name,attr));
                     break;
                 case DIAGRAM:
-                    this.Diagram.Add(new Element(tag.Name, attr));
+                    //this.Diagram.Add(new Element(tag.Name, attr));
+                    this.Diagrams.Add(attr["xmi:id"], new ArrayList() { new Element(tag.Name, attr) });
                     break;
+                //case ELEMENT:
+                //    this.Element.Add(new Element(tag.Name, attr));
+                //    break;
             }
         }
 
