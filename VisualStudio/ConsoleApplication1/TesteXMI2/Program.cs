@@ -27,11 +27,16 @@ namespace TesteXMI2
         static void Main(string[] args)
         {
             Dictionary<ArrayList, ArrayList> diagrams = new Dictionary<ArrayList, ArrayList>();
-            
-            //string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
-            string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
 
-            XMI xmi = new XMI(arquivoXmi);
+            string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
+            //string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
+
+            //XMI xmi = new XMI(arquivoXmi);
+
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(arquivoXmi);
+
+            XmlNode node = xmlDocument.SelectSingleNode("/diagram[@xmi:id='EAID_FA61B5CA_E2F0_4e52_8F49_928A0807627B']");
             
 
             //XmlDocument xmlDocument = new XmlDocument();

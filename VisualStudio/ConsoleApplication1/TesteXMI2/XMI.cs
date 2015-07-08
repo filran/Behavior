@@ -46,10 +46,11 @@ namespace TesteXMI2
               
             this.xmlDocument.Load(arquivoXmi);
 
-            readTag(xmlDocument.SelectNodes("//"+OWNEDBEHAVIOR));
+            readTag(xmlDocument.SelectNodes("//" + OWNEDBEHAVIOR));
             readTag(xmlDocument.SelectNodes("//" + DIAGRAMS));
 
-
+            XmlNode x = xmlDocument.SelectSingleNode("/diagram[@id='EAID_FA61B5CA_E2F0_4e52_8F49_928A0807627B']");
+            selectTagSpecific(x, "teste");
 
             //TESTE
             //foreach( Element o in OwnedBehavior )
@@ -167,8 +168,25 @@ namespace TesteXMI2
                     this.Message.Add(new Element(tag.Name,attr));
                     break;
                 case DIAGRAM:
+                    //Dictionary<string, string> teste = new Dictionary<string, string>();
+                    //teste.Add("nome","teste");
+                    //this.Diagram.Add(new Element("teste", teste));
+                    
                     this.Diagram.Add(new Element(tag.Name, attr));
+
+                    int lastIndex = this.Diagram.Count - 1;
+
+                    //readTag(xmlDocument.SelectNodes("//" + DIAGRAMS));
+
                     break;
+            }
+        }
+
+        private void selectTagSpecific( XmlNode node , string searchTag)
+        {
+            foreach( XmlNodeList n in node )
+            {
+                //Console.WriteLine( n. );
             }
         }
 
