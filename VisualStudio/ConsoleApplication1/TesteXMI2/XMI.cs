@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * ----------------------------------------------------------------------------------
+ *                      DEVELOPMENT BY FILIPE ARANTES                               *
+ *                 filran@gmail.com | ffernandes@cos.ufrj                           *
+ * ----------------------------------------------------------------------------------
+ * 
+ * The XMI class it has propose read a file XMI. 
+ * The access his content is through by public variables, e.g., OwnedBehavior, Lifeline ...
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +20,18 @@ namespace TesteXMI2
     public class XMI
     {
         //TAGS IN XMI
-        public const string OWNEDBEHAVIOR = "ownedBehavior";
-        public const string LIFELINE = "lifeline";
-        public const string FRAGMENT = "fragment";
-        public const string MESSAGE = "message";
-        public const string DIAGRAMS = "diagrams";
-        public const string DIAGRAM = "diagram";
-        public const string ELEMENTS = "elements";
-        public const string ELEMENT = "element";
-        public const string EXTENSION = "Extension";
+        private const string OWNEDBEHAVIOR = "ownedBehavior";
+        private const string LIFELINE = "lifeline";
+        private const string FRAGMENT = "fragment";
+        private const string MESSAGE = "message";
+        private const string DIAGRAMS = "diagrams";
+        private const string DIAGRAM = "diagram";
+        private const string ELEMENTS = "elements";
+        private const string ELEMENT = "element";
+        private const string EXTENSION = "Extension";
             
-        public string ArquivoXmi { get; private set; }
-        public XmlDocument xmlDocument = new XmlDocument();
+        private string ArquivoXmi { get; set; }
+        private XmlDocument xmlDocument = new XmlDocument();
 
         public ArrayList OwnedBehavior { get; private set; }
         public ArrayList Lifeline { get; private set; }
@@ -34,7 +44,7 @@ namespace TesteXMI2
          * 
          */
         public Dictionary<string, ArrayList > Diagrams { get; private set; }
-        public ArrayList Element { get; private set; }
+        private ArrayList Element { get; set; }
 
 
         public XMI(string arquivoXmi)

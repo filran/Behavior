@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * ----------------------------------------------------------------------------------
+ *                      DEVELOPMENT BY FILIPE ARANTES                               *
+ *                 filran@gmail.com | ffernandes@cos.ufrj                           *
+ * ----------------------------------------------------------------------------------
+ */ 
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +37,13 @@ namespace TesteXMI2
 
             //string arquivoXmi = "F:\\Users\\Filipe\\Documents\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
             string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
+            //XMI xmi = new XMI(arquivoXmi);
+            Diagram diagram = new Diagram(arquivoXmi);
 
-            XMI xmi = new XMI(arquivoXmi);
+            foreach (string a in diagram.IdSequenceDiagram)
+            {
+                Console.WriteLine(a);
+            }
 
             
             //Dictionary<string, ArrayList> teste = new Dictionary<string, ArrayList>();
