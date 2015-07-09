@@ -78,15 +78,15 @@ using System.Xml;
             //}
 
             //SHOW ELEMENTS
-            foreach(Element e in Element)
-            {
-                Console.Write( e.Tag + " ");
-
-                foreach (var a in e.AttributesElement)
-                {
-                    //Console.WriteLine( a.Key +"="+ a.Value);
-                }
-            }
+//            foreach(Element e in Element)
+//            {
+//                Console.Write( e.Tag + " ");
+//
+//                foreach (var a in e.AttributesElement)
+//                {
+//                    //Console.WriteLine( a.Key +"="+ a.Value);
+//                }
+//            }
 
         }
         

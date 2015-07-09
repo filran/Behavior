@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Test\Assets\Scripts\ObjectLifeline.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Program.cs">
     <Files>
-      <File FileName="..\Test\Assets\Scripts\ObjectLifeline.cs" Line="9" Column="17" />
+      <File FileName="Assets\Scripts\Program.cs" Line="37" Column="26" />
+      <File FileName="Assets\Scripts\Diagram.cs" Line="34" Column="35" />
+      <File FileName="Assets\Scripts\XMI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Life.cs" Line="11" Column="3" />
+      <File FileName="Assets\Scripts\ButtonDiagram.cs" Line="13" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

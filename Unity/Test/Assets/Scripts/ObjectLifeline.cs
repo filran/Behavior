@@ -13,6 +13,8 @@ public class ObjectLifeline : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		transform.position = transform.position + Vector3.forward * velocidade * Time.deltaTime;
+//		transform.position = transform.position + Vector3.forward * velocidade * Time.deltaTime;
+
+//		transform.localScale = transform.localScale + Vector3.forward * velocidade * Time.deltaTime;
 	}
 }

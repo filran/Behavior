@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectLifeline.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Prototype\Assets\Scripts\Program.cs">
     <Files>
-      <File FileName="Assets\Scripts\ObjectLifeline.cs" Line="9" Column="17" />
+      <File FileName="..\Prototype\Assets\Scripts\Program.cs" Line="8" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
