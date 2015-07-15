@@ -18,18 +18,24 @@ using System.Text;
 //{
     public class Diagram
     {
-        public string Id { get; private set; }
-        public string Name { get; private set; }
+        public string Id { get; protected set; }
+        public string Name { get; protected set; }
         private XMI FileXMI { get; set;}
-        private Dictionary<string, ArrayList> Diagrams { get; set; }
-        public ArrayList IdSequenceDiagram { get; private set; } //SALVE THE XMI:ID
+		private Dictionary<string, ArrayList> DiagramsXMI { get; set; }
+//        public ArrayList IdSequenceDiagram { get; private set; } //SALVE THE XMI:ID
+		public ArrayList SequenceDiagrams { get; private set;}
+
 
         public Diagram( string xmi )
         {
             //string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
             this.FileXMI = new XMI(xmi);
-            this.Diagrams = this.FileXMI.Diagrams;
-            this.IdSequenceDiagram = new ArrayList();
+
+            this.DiagramsXMI = this.FileXMI.Diagrams;
+//            this.IdSequenceDiagram = new ArrayList();
+
+			this.SequenceDiagrams = new ArrayList ();
+				
 
             identifyTypeDiagram();
         }
@@ -38,19 +44,37 @@ using System.Text;
 
         private void identifyTypeDiagram()
         {   
-            foreach(var d in this.Diagrams)
+			foreach(var d in this.DiagramsXMI)
             {
                 foreach(Element dd in d.Value)
                 {
                     if (dd.Tag == "properties" && dd.AttributesElement["type"] == "Sequence" )
                     {
-                        this.IdSequenceDiagram.Add(d.Key);
+//                        this.IdSequenceDiagram.Add(d.Key);
+						this.SequenceDiagrams.Add( new Sequence( d.Value ) );
                     }
                 }
             }
         }
-    
-    }//END DIAGRAM CLASS
+
+    	
+		public void setIdandName( ArrayList d ){
+			foreach(Element e in d )
+			{
+				if( e.Tag == "diagram" )
+				{
+					this.Id = e.AttributesElement["xmi:id"];
+				}
+				else if ( e.Tag == "properties" )
+				{
+					this.Name = e.AttributesElement["name"];
+				}
+
+			}
+		}	
+
+
+    }
 
 
         public abstract class Behavioral : Diagram
@@ -62,22 +86,18 @@ using System.Text;
 
             public class Sequence : Behavioral
             {
+				public ArrayList ElementsSequence { get; private set; }
 
                 //RELATIONSHIP
                 public ArrayList Lifelines { get; private set; }
                 
-                //CONSTRUCTOR
-                public Sequence() {
-                    identifySequenceDiagram();
-                }
+				//CONSTRUCTOR
+				public Sequence(ArrayList e)
+				{
+					this.ElementsSequence = e;
 
-                private void identifySequenceDiagram()
-                {
-                    if( IdSequenceDiagram.Count > 0 ){
-                        //Console.WriteLine("Temos " + IdSequenceDiagram.Count+" diagramas de sequencia");
-                    }
-                }
-
+					this.setIdandName ( e );
+				}
 
                 public void addLifelines (ArrayList lifelines)
                 {

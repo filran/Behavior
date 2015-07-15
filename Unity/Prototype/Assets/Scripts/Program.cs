@@ -6,40 +6,44 @@ public class Program : MonoBehaviour
 
 	private Diagram diagram { get; set; }
 	public string arquivoXMI;
-	public GameObject ButtonDiagram;
-	private const int SPACEX = 3;
-	private float widthscreen = (float) Screen.width;
-	private float heightscreen = (float) Screen.height;
+	public GameObject ButtonDiagramGameObject;
+	private const int SPACEX = 2;
 
 	// Use this for initialization
 	void Start ()
 	{
-		Debug.Log ( widthscreen );
+		this.diagram = new Diagram (arquivoXMI);
 
-		Diagram diagram = new Diagram (arquivoXMI);
+		ButtonForEachSequenceDiagram ();
+	}
 
-		if( diagram.IdSequenceDiagram.Count > 0 )
-		{
-			float scaleX = ButtonDiagram.transform.localScale.x;
-			float radius = scaleX / 2;
-			float sumRadius = diagram.IdSequenceDiagram.Count * radius;
-			float FirstPosBDx = ( sumRadius / diagram.IdSequenceDiagram.Count ) * 1;
 
-			for(int i=1 ; i<=diagram.IdSequenceDiagram.Count; i++)
+	//BUTTON FOR EACH SEQUENCE DIAGRAM
+	private void ButtonForEachSequenceDiagram()
+	{
+		if (this.diagram.SequenceDiagrams.Count > 0) {
+			float increment = (this.ButtonDiagramGameObject.transform.localScale.x / 2) + SPACEX;
+			float position = 0;
+
+			foreach( Sequence s in this.diagram.SequenceDiagrams )
 			{
-				float posBDx = FirstPosBDx * ( i ) ;
-				float posBDy = ButtonDiagram.transform.position.y;
-				float posBDz = ButtonDiagram.transform.position.z;
+				float posBDx = position;
+				float posBDy = this.ButtonDiagramGameObject.transform.position.y;
+				float posBDz = this.ButtonDiagramGameObject.transform.position.z;
 
-				Vector3 posButtonDiagram = new Vector3( posBDx, posBDy, posBDz );
-				Instantiate(ButtonDiagram , posButtonDiagram , Quaternion.identity);
+				Vector3 posButtonDiagram = new Vector3 (posBDx, posBDy, posBDz);
+				GameObject ins = (GameObject)Instantiate (this.ButtonDiagramGameObject, posButtonDiagram, Quaternion.identity);
 
-				Debug.Log ( posBDx );
+				string random = Random.Range (0.0f, 10.0f).ToString ();
+
+				ins.GetComponentInChildren<ButtonDiagram> ().NameDiagram ( s.Name );
+
+				position += increment;
 			}
-
 		}
 	}
 	
+
 	// Update is called once per frame
 	void Update ()
 	{

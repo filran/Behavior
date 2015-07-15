@@ -1,0 +1,12 @@
+
+public class Programa {
+	public static void main(String[] args)
+	{
+		GeraPDF gerapdf = new GeraPDF();
+		Thread threadDopdf = new Thread(gerapdf);
+		threadDopdf.start();
+		threadDopdf.sleep(5*1000);
+		
+		
+	}
+}

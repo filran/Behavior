@@ -1,0 +1,19 @@
+
+public class Programa {
+	private int id;
+	
+	public void Program(int id)
+	{
+		this.id = id;
+	}
+	
+	public int getId()
+	{
+		return this.id;
+	}
+	
+	private void setId()
+	{
+		
+	}
+}

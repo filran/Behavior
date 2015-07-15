@@ -1,0 +1,7 @@
+
+public class GeraPDF {
+	public void rodar()
+	{
+		
+	}
+}
