@@ -1,13 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Diagram.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Program.cs" Line="24" Column="49" />
-      <File FileName="Assets\Scripts\ButtonDiagram.cs" Line="15" Column="27" />
-      <File FileName="Assets\Scripts\Diagram.cs" Line="106" Column="2" />
-      <File FileName="Assets\Scripts\XMI.cs" Line="129" Column="26" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -21,36 +21,37 @@ using System.Text;
         public string Id { get; protected set; }
         public string Name { get; protected set; }
         private XMI FileXMI { get; set;}
-		private Dictionary<string, ArrayList> DiagramsXMI { get; set; }
-//        public ArrayList IdSequenceDiagram { get; private set; } //SALVE THE XMI:ID
-		public ArrayList SequenceDiagrams { get; private set;}
-
+		public ArrayList SequenceDiagrams { get; private set;} //store the objects of class Sequence
+		public Dictionary<string, ArrayList > Diagrams { get; private set; }
+		public ArrayList Lifeline { get; private set; }
 
         public Diagram( string xmi )
         {
             //string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
             this.FileXMI = new XMI(xmi);
 
-            this.DiagramsXMI = this.FileXMI.Diagrams;
-//            this.IdSequenceDiagram = new ArrayList();
+			this.Diagrams = FileXMI.Diagrams;
 
+			this.Lifeline = FileXMI.Lifeline;
+
+			//add objects of class Sequence
 			this.SequenceDiagrams = new ArrayList ();
-				
 
             identifyTypeDiagram();
         }
 
-        public Diagram() { }
+    
+		public Diagram() { }
+
 
         private void identifyTypeDiagram()
         {   
-			foreach(var d in this.DiagramsXMI)
+			foreach(var d in this.FileXMI.Diagrams)
             {
                 foreach(Element dd in d.Value)
                 {
                     if (dd.Tag == "properties" && dd.AttributesElement["type"] == "Sequence" )
                     {
-//                        this.IdSequenceDiagram.Add(d.Key);
 						this.SequenceDiagrams.Add( new Sequence( d.Value ) );
                     }
                 }
@@ -86,23 +87,42 @@ using System.Text;
 
             public class Sequence : Behavioral
             {
+				//store sequence of type Element
 				public ArrayList ElementsSequence { get; private set; }
+				//store the objects or actors
+				public Dictionary<Element,Element> Objects { get; private set;}
+				//store messagens
+				public ArrayList Messages { get; private set; }
 
-                //RELATIONSHIP
-                public ArrayList Lifelines { get; private set; }
                 
 				//CONSTRUCTOR
 				public Sequence(ArrayList e)
 				{
 					this.ElementsSequence = e;
-
 					this.setIdandName ( e );
+
+					setObjects();
 				}
 
-                public void addLifelines (ArrayList lifelines)
-                {
-                    this.Lifelines = lifelines;
-                }
+				//find the objects or actors and store in ArrayList Objects
+				public void setObjects()
+				{
+					foreach(var d in this.Diagrams){
+						foreach(Element e in d.Value){
+							if( e.Tag == "diagram" && e.AttributesElement["xmi:id"] == this.Id ){
+								if( e.Tag == "element" ){
+									foreach(Element ee in this.Lifeline){
+										if(e.AttributesElement["subject"] == ee.AttributesElement["xmi:id"]){
+											this.Objects.Add(ee,e);
+										}
+									}
+								}
+							}	
+						}
+					}
+				}
+
+                
 
             }
 
