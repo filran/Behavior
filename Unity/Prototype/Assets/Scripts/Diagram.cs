@@ -7,7 +7,7 @@
  * The XMI class it has propose read a file XMI. 
  * The access his content is through by public variables, e.g., OwnedBehavior, Lifeline ...
  */
-
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,19 +20,13 @@ using System.Text;
     {
         public string Id { get; protected set; }
         public string Name { get; protected set; }
-        private XMI FileXMI { get; set;}
+        public XMI FileXMI { get; set;}
 		public ArrayList SequenceDiagrams { get; private set;} //store the objects of class Sequence
-		public Dictionary<string, ArrayList > Diagrams { get; private set; }
-		public ArrayList Lifeline { get; private set; }
 
         public Diagram( string xmi )
         {
             //string arquivoXmi = "F:\\Documentos\\Programacao\\GitHub\\Behavior\\VisualStudio\\ConsoleApplication1\\TesteXMI2\\DiaSeqs_XMI2.1.xml";
             this.FileXMI = new XMI(xmi);
-
-			this.Diagrams = FileXMI.Diagrams;
-
-			this.Lifeline = FileXMI.Lifeline;
 
 			//add objects of class Sequence
 			this.SequenceDiagrams = new ArrayList ();
@@ -74,6 +68,9 @@ using System.Text;
 			}
 		}	
 
+		//Method implemented for all class
+		protected static void render (Diagram d){}
+	
 
     }
 
@@ -90,10 +87,9 @@ using System.Text;
 				//store sequence of type Element
 				public ArrayList ElementsSequence { get; private set; }
 				//store the objects or actors
-				public Dictionary<Element,Element> Objects { get; private set;}
+				public Dictionary<string,ArrayList> Objects { get; private set;}
 				//store messagens
 				public ArrayList Messages { get; private set; }
-
                 
 				//CONSTRUCTOR
 				public Sequence(ArrayList e)
@@ -101,26 +97,52 @@ using System.Text;
 					this.ElementsSequence = e;
 					this.setIdandName ( e );
 
-					setObjects();
+					this.Objects = new Dictionary<string,ArrayList>();
 				}
 
-				//find the objects or actors and store in ArrayList Objects
-				public void setObjects()
+
+				public void render( Diagram d )
 				{
-					foreach(var d in this.Diagrams){
-						foreach(Element e in d.Value){
-							if( e.Tag == "diagram" && e.AttributesElement["xmi:id"] == this.Id ){
-								if( e.Tag == "element" ){
-									foreach(Element ee in this.Lifeline){
-										if(e.AttributesElement["subject"] == ee.AttributesElement["xmi:id"]){
-											this.Objects.Add(ee,e);
-										}
+					//store <lifeline> and <element> in Objects
+//					foreach( Element l in d.FileXMI.Lifeline ){
+//						int count = 0;
+//						foreach( var dd in d.FileXMI.Diagrams ){
+//							if( dd.Key == this.Id ){
+//								foreach(Element e in dd.Value ){
+//									if(e.Tag=="element" && e.AttributesElement["subject"] == l.AttributesElement["xmi:id"] && count==0){
+//										this.Objects.Add( e.AttributesElement["subject"] , new ArrayList(){e,l});
+//										count++;
+//									}
+//								}
+//							}
+//						}
+//					}
+					foreach( var dd in d.FileXMI.Diagrams ){
+						if( dd.Key == this.Id ){
+							ArrayList elements = new ArrayList();
+			
+							foreach( var e in d.FileXMI.Diagrams.Values ){
+								foreach( Element ee in e ){
+									if( ee.Tag=="element" ){
+										elements.Add(ee);
+									}		
+								}
+							}
+		
+							foreach( Element l in d.FileXMI.Lifeline ){
+								foreach( Element e in elements ){
+									if( l.AttributesElement["xmi:id"]==e.AttributesElement["subject"] ){
+										this.Objects.Add(l.AttributesElement["xmi:id"],new ArrayList(){e,l});
 									}
 								}
-							}	
+							}
+
 						}
+
 					}
+					
 				}
+
 
                 
 

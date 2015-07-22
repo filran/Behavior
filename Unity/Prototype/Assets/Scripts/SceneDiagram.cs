@@ -26,8 +26,17 @@ public class SceneDiagram : MonoBehaviour {
 					//THIS SCOPE WILL RENDER THE DIAGRAM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 					// Render Lifes, Messages with his animations
 
+					s.render( this.diagram );
 
-					if( s.Objects == null ){ Debug.Log("NULL"); }
+					if( s.Objects != null ){ 
+						Debug.Log( s.Objects.Count );
+
+						foreach( var o in s.Objects ){
+							Debug.Log( o.Key );
+						}
+					}
+
+					Debug.Log( this.diagram.FileXMI.Lifeline.Count );
 				}
 			}
 		}

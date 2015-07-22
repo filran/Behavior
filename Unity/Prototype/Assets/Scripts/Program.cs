@@ -47,7 +47,7 @@ public class Program : MonoBehaviour
 				ins = (GameObject)Instantiate (this.ButtonDiagramGameObject, posButtonDiagram, Quaternion.identity) ;
 
 				//here send the name, id and type each diagram for the class ButtonDiagram
-				ins.GetComponentInChildren<ButtonDiagram> ().NameDiagram ( s.Name );
+				ins.GetComponentInChildren<ButtonDiagram>().NameDiagram ( s.Name );
 				ins.GetComponentInChildren<ButtonDiagram>().IdDiagram(s.Id);
 				ins.GetComponentInChildren<ButtonDiagram>().TypeDiagram( s.GetType().ToString() );
 
