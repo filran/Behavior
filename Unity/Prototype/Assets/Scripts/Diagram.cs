@@ -103,44 +103,28 @@ using System.Text;
 
 				public void render( Diagram d )
 				{
-					//store <lifeline> and <element> in Objects
-//					foreach( Element l in d.FileXMI.Lifeline ){
-//						int count = 0;
-//						foreach( var dd in d.FileXMI.Diagrams ){
-//							if( dd.Key == this.Id ){
-//								foreach(Element e in dd.Value ){
-//									if(e.Tag=="element" && e.AttributesElement["subject"] == l.AttributesElement["xmi:id"] && count==0){
-//										this.Objects.Add( e.AttributesElement["subject"] , new ArrayList(){e,l});
-//										count++;
-//									}
-//								}
-//							}
-//						}
-//					}
-					foreach( var dd in d.FileXMI.Diagrams ){
-						if( dd.Key == this.Id ){
-							ArrayList elements = new ArrayList();
-			
-							foreach( var e in d.FileXMI.Diagrams.Values ){
-								foreach( Element ee in e ){
-									if( ee.Tag=="element" ){
-										elements.Add(ee);
-									}		
-								}
-							}
-		
-							foreach( Element l in d.FileXMI.Lifeline ){
-								foreach( Element e in elements ){
-									if( l.AttributesElement["xmi:id"]==e.AttributesElement["subject"] ){
-										this.Objects.Add(l.AttributesElement["xmi:id"],new ArrayList(){e,l});
+					
+								
+					//store <lifeline> and <element> of "Objetos" in Objects
+					foreach( Element l in d.FileXMI.Lifeline ){
+						foreach( var dd in d.FileXMI.Diagrams ){
+							if( dd.Key == this.Id ){
+								foreach(Element e in dd.Value ){
+									if(e.Tag=="element" && e.AttributesElement["subject"] == l.AttributesElement["xmi:id"]){
+										if( this.Objects.Count > 0 ){
+											if( this.Objects.Last().Key != l.AttributesElement["xmi:id"] ){
+												this.Objects.Add(l.AttributesElement["xmi:id"],new ArrayList(){e,l});
+											}
+										}else{
+											this.Objects.Add(l.AttributesElement["xmi:id"],new ArrayList(){e,l});
+										}																		
 									}
 								}
 							}
-
 						}
+					}				
 
-					}
-					
+
 				}
 
 
