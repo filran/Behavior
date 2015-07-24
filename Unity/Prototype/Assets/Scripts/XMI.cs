@@ -37,15 +37,21 @@ using System.Xml;
         public ArrayList Lifeline { get; private set; }
         public ArrayList Fragment { get; private set; }
         public ArrayList Message { get; private set; }
-
-        /* Example of the Digrams
+		public Dictionary<string, ArrayList > Diagrams { get; private set; }
+		/* Example of the Digrams
          * 
          * Digrams.Add( EAID_C5A4346A_C4D2_4a24_BDFB_CB31D97D8BDC , new ArrayList(){ new Element("tag", Atributos) , new Element("tag", Atributos) ,...} );
          * 
          */
-        public Dictionary<string, ArrayList > Diagrams { get; private set; }
-        private ArrayList Element { get; set; }
+		public Dictionary<string, ArrayList > Elements { get; private set; }
+		/* Example of the Digrams
+         * 
+         * Digrams.Add( EAID_C5A4346A_C4D2_4a24_BDFB_CB31D97D8BDC , new ArrayList(){ new Element("tag", Atributos) , new Element("tag", Atributos) ,...} );
+         * 
+         */
 
+		public Dictionary<string,string> testeAttr { get; set;}
+	
 
         public XMI(string arquivoXmi)
         {
@@ -54,13 +60,16 @@ using System.Xml;
             this.Fragment = new ArrayList();
             this.Message = new ArrayList();
             this.Diagrams = new Dictionary<string, ArrayList>();
-            this.Element = new ArrayList();
+            this.Elements = new Dictionary<string, ArrayList>();
+//			this.Elements = new ArrayList ();
+
+			this.testeAttr = new Dictionary<string,string> ();
               
             this.xmlDocument.Load(arquivoXmi);
 
             readTag(xmlDocument.SelectNodes("//" + OWNEDBEHAVIOR));
             readTag(xmlDocument.SelectNodes("//" + DIAGRAM));
-            readTag(xmlDocument.SelectNodes("//" + ELEMENTS));
+            readTag(xmlDocument.SelectNodes("//" + ELEMENT));
 
             //SHOW DIAGRAMS
             //foreach (var d in Diagrams)
@@ -97,7 +106,7 @@ using System.Xml;
             {
                 //Console.WriteLine("Parant:" + node.ParentNode.ParentNode.ParentNode.Name );
                 Dictionary<string,string>  attr = readAttributes( node );
-                createElement( node , attr );
+				createElement( node , attr );
                 loopChild(node);
             }
         }
@@ -110,42 +119,61 @@ using System.Xml;
                 foreach (XmlNode x in node.ChildNodes)
                 {
                     Dictionary<string, string> attr = readAttributes(x);
-                    createElement(x, attr);
+                    
+					createElement(x, attr);
 
-                    //SALVE CHILDS' DIAGRAM ///////////////////////////////////////////////////
-                    string id_diagram = "";
-                    if (x.ParentNode.Name == DIAGRAM || x.ParentNode.ParentNode.Name == DIAGRAM)
-                    {                        
-                        if( x.ParentNode.Name == DIAGRAM  )
-                        {
-                            id_diagram = x.ParentNode.Attributes["xmi:id"].Value;
-                        }
-                        else if (x.ParentNode.ParentNode.Name == DIAGRAM)
-                        {
-                            id_diagram = x.ParentNode.ParentNode.Attributes["xmi:id"].Value;
-                        }
-
-                        foreach( var d in this.Diagrams )
-                        {
-                            if (d.Key == id_diagram)
-                            {
-                                d.Value.Add( new Element(x.Name,attr) );
-                            }
-                        }
-                    }//////////////////////////////////////////////////////////////////////////
-
-                    //SALVE CHILDS'S ELEMENTS /////////////////////////////////////////////////////////
-                    if( x.ParentNode.Name == EXTENSION && x.FirstChild.Name == ELEMENT )
-                    {
-                        Console.WriteLine("goooooooooooooooollllllllllllllllll");
-
-
-                    }//////////////////////////////////////////////////////////////////////////////////
+					saveChild(x,attr);
                     
                     loopChild(x);
                 }
             }
         }
+
+		private void saveChild(XmlNode x , Dictionary<string,string> attr){
+		//SALVE CHILDS' DIAGRAM ///////////////////////////////////////////////////
+			string id = "";
+			if (x.ParentNode.Name == DIAGRAM || x.ParentNode.ParentNode.Name == DIAGRAM)
+			{                        
+				if( x.ParentNode.Name == DIAGRAM  )
+				{
+					id = x.ParentNode.Attributes["xmi:id"].Value;
+				}
+				else if (x.ParentNode.ParentNode.Name == DIAGRAM)
+				{
+					id = x.ParentNode.ParentNode.Attributes["xmi:id"].Value;
+				}
+
+				foreach( var d in this.Diagrams )
+				{
+					if (d.Key == id)
+					{
+						d.Value.Add( new Element(x.Name,attr) );
+					}
+				}
+			}//////////////////////////////////////////////////////////////////////////		
+
+
+			if (x.ParentNode.Name == ELEMENT || x.ParentNode.ParentNode.Name == ELEMENT)
+			{                        
+				if( x.ParentNode.Name == ELEMENT  )
+				{
+					id = x.ParentNode.Attributes["xmi:idref"].Value;
+				}
+				else if (x.ParentNode.ParentNode.Name == ELEMENT)
+				{
+					id = x.ParentNode.ParentNode.Attributes["xmi:idref"].Value;
+				}
+				
+				foreach( var d in this.Elements )
+				{
+					if (d.Key == id)
+					{
+						d.Value.Add( new Element(x.Name,attr) );
+					}
+				}
+			}//////////////////////////////////////////////////////////////////////////		
+
+		}
 
         //READ ATTRIBUTES
         private Dictionary<string,string> readAttributes( XmlNode node )
@@ -163,6 +191,8 @@ using System.Xml;
         //CREATE OBJ ELEMENT AND ADD YOUR ARRAYLIST OR DICTIONARY
         private void createElement( XmlNode tag , Dictionary<string,string> attr)
         {
+			Random rand = new Random ();
+
             switch( tag.Name )
             {
                 case OWNEDBEHAVIOR:
@@ -181,11 +211,16 @@ using System.Xml;
                     //this.Diagram.Add(new Element(tag.Name, attr));
                     this.Diagrams.Add(attr["xmi:id"], new ArrayList() { new Element(tag.Name, attr) });
                     break;
-                //case ELEMENT:
-                //    this.Element.Add(new Element(tag.Name, attr));
-                //    break;
+                case ELEMENT:					
+					foreach( var a in attr ){
+						if( a.Key == "xmi:idref" ){
+							this.Elements.Add(attr["xmi:idref"], new ArrayList() { new Element(tag.Name, attr) });
+						}
+					}
+                    break;
             }
         }
+
 
     
     }//END CLASS XMI

@@ -20,6 +20,15 @@ public class Program : MonoBehaviour
 		this.diagram = new Diagram (arquivoXMI);
 
 		ButtonForEachSequenceDiagram ();
+
+		//TESTS
+		Debug.Log ( this.diagram.FileXMI.Elements.Count );
+		foreach( var e in this.diagram.FileXMI.Elements ){
+			Debug.Log( e.Key );
+			foreach( Element ee in e.Value ){
+				Debug.Log( ee.Tag );
+			}
+		}
 	}
 
 

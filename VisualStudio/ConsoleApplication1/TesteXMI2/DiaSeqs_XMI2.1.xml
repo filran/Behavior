@@ -65,7 +65,7 @@
 					<Sequence xmi:id="EAID_3CAC9013_E490_4c19_AE6A_DAC852A5D807" start="EAID_6A95F124_B7A4_4c84_95FE_15388C8BCAB2" end="EAID_2CE1C8C2_1B6B_4eb7_9430_33210F9F457B"/>
 				</links>
 			</element>
-			<element xmi:idref="EAID_3AD959AE_799A_4e2f_A7D6_8271BB30BA2A" xmi:type="uml:Sequence" name="Object1" scope="public">
+      <element xmi:idref="EAID_3AD959AE_799A_4e2f_A7D6_8271BB30BA2A" xmi:type="uml:Sequence" name="Object1" scope="public">
 				<model package="EAPK_9FE6AEAB_B13E_4e09_A5BA_A077674CAEAB" tpos="0" ea_localid="2" ea_eleType="element"/>
 				<properties isSpecification="false" sType="Sequence" nType="0" scope="public"/>
 				<project author="Filipe" version="1.0" phase="1.0" created="2015-06-28 11:16:20" modified="2015-06-28 11:16:20" complexity="1" status="Proposed"/>
