@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Program.cs" />
      <Compile Include="Assets\Scripts\SceneDiagram.cs" />
      <Compile Include="Assets\Scripts\XMI.cs" />
+     <None Include="Assets\DiaSeqs_XMI2.1.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

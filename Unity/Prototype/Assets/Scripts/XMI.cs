@@ -222,19 +222,46 @@ using System.Xml;
         }
 
 
-    
-    }//END CLASS XMI
+		//ORDERING THE ELEMENTS OF DIAGRAM IN THE SEQUENCE
+		private void orderingElements()
+		{
+			Dictionary<string,string> toorder = new Dictionary<string,string> ();
+			ArrayList oldElements = new ArrayList ();
+			
+			foreach( var d in this.Diagrams )
+			{
+				foreach( Element e in d.Value )
+				{
+					if( e.Tag == "element" )
+					{
+						toorder.Add( e.AttributesElement["subject"] , e.AttributesElement["seqno"] );
+						oldElements.Add(e);
+					}
+				}
+			}
 
-    public class Element
+			// Order by values.
+			// ... Use LINQ to specify sorting by value.
+			var doneorder = from pair in toorder orderby pair.Value descending select pair;
+
+			
+			
+		}
+	
+	
+	
+	}//END CLASS XMI
+
+	public class Element
     {
         public string Tag { get; private set; } //<Tag>
         public Dictionary<string, string> AttributesElement { get; private set; } //<Tag att1="value1" att2="value2" ... />
 
         public Element( string tag , Dictionary<string, string> attr ){
-            this.Tag = tag;
-            this.AttributesElement = attr;
+				this.Tag = tag;
+	            this.AttributesElement = attr;
         }
-    
+
     }//END CLASS ELEMENT
 
 //}
