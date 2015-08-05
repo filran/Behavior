@@ -104,7 +104,7 @@ using System.Text;
 				public void render( Diagram d )
 				{
 					
-					//store <lifeline> and <element> of "Objetos" in Objects==============================
+					//store <lifeline> and <element> of "Objetos" in Class/Objects==============================
 					foreach( Element l in d.FileXMI.Lifeline ){
 						foreach( var dd in d.FileXMI.Diagrams ){
 							if( dd.Key == this.Id ){
@@ -121,11 +121,9 @@ using System.Text;
 								}
 							}
 						}
-					}//=====================================================================================				
-
+					}//=====================================================================================	
 
 					
-
 				}
 
 

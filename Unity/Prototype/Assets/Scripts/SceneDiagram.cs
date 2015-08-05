@@ -73,10 +73,11 @@ public class SceneDiagram : MonoBehaviour {
 
 						}
 					}
-
 				}
 			}
 		}
+
+
 
 	}
 	

@@ -71,32 +71,6 @@ using System.Xml;
             readTag(xmlDocument.SelectNodes("//" + DIAGRAM));
             readTag(xmlDocument.SelectNodes("//" + ELEMENT));
 
-            //SHOW DIAGRAMS
-            //foreach (var d in Diagrams)
-            //{
-            //    Console.WriteLine(d.Key);
-            //    foreach (Element dd in d.Value)
-            //    {
-            //        Console.Write(dd.Tag + " ");
-            //        foreach (var ddd in dd.AttributesElement)
-            //        {
-            //            Console.WriteLine(ddd.Key + "=" + ddd.Value);
-            //        }
-            //    }
-            //    Console.WriteLine("\n");
-            //}
-
-            //SHOW ELEMENTS
-//            foreach(Element e in Element)
-//            {
-//                Console.Write( e.Tag + " ");
-//
-//                foreach (var a in e.AttributesElement)
-//                {
-//                    //Console.WriteLine( a.Key +"="+ a.Value);
-//                }
-//            }
-
         }
         
         //READ THE FIRST NODE
@@ -119,11 +93,8 @@ using System.Xml;
                 foreach (XmlNode x in node.ChildNodes)
                 {
                     Dictionary<string, string> attr = readAttributes(x);
-                    
 					createElement(x, attr);
-
 					saveChild(x,attr);
-                    
                     loopChild(x);
                 }
             }
