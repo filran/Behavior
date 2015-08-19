@@ -1,0 +1,7 @@
+
+public class BarraDeProgresso {
+	public void rodar()
+	{
+		
+	}
+}

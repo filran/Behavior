@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<xs:schema xmlns:UML="org.omg.xmi.namespace.UML" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="org.omg.xmi.namespace.UML" />
+  <xs:element name="XMI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="XMI.header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="XMI.documentation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="XMI.exporter" type="xs:string" />
+                    <xs:element name="XMI.exporterVersion" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="XMI.metamodel">
+                <xs:complexType>
+                  <xs:attribute name="XMI.name" type="xs:string" use="required" />
+                  <xs:attribute name="XMI.version" type="xs:decimal" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="XMI.content">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="UML:Model" />
+              <xs:element maxOccurs="unbounded" ref="UML:Diagram" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="XMI.extensions">
+          <xs:complexType>
+            <xs:attribute name="xmi.extender" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="xmi.version" type="xs:decimal" use="required" />
+      <xs:attribute name="timestamp" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

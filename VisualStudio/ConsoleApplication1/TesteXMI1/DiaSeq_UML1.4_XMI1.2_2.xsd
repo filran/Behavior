@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<xs:schema xmlns:tns="org.omg.xmi.namespace.UML" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="org.omg.xmi.namespace.UML" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Model">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Namespace.ownedElement">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element maxOccurs="unbounded" name="TagDefinition">
+                  <xs:complexType>
+                    <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                    <xs:attribute name="tagType" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Collaboration">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Namespace.ownedElement">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="ClassifierRole">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="ModelElement.taggedValue">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="TaggedValue">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element name="TaggedValue.dataValue" type="xs:string" />
+                                              <xs:element name="TaggedValue.type">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="TagDefinition">
+                                                      <xs:complexType>
+                                                        <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                                      </xs:complexType>
+                                                    </xs:element>
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                            <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="name" type="xs:string" use="required" />
+                                <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                <xs:attribute name="visibility" type="xs:string" use="required" />
+                                <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Collaboration.interaction">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Interaction">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Interaction.message">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="Message">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element name="ModelElement.taggedValue">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element maxOccurs="unbounded" name="TaggedValue">
+                                                      <xs:complexType>
+                                                        <xs:sequence>
+                                                          <xs:element name="TaggedValue.dataValue" type="xs:string" />
+                                                          <xs:element name="TaggedValue.type">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element name="TagDefinition">
+                                                                  <xs:complexType>
+                                                                    <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                        </xs:sequence>
+                                                        <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                                        <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                                                      </xs:complexType>
+                                                    </xs:element>
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="name" type="xs:string" use="required" />
+                                            <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                            <xs:attribute name="visibility" type="xs:string" use="required" />
+                                            <xs:attribute name="sender" type="xs:string" use="required" />
+                                            <xs:attribute name="receiver" type="xs:string" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                <xs:attribute name="name" type="xs:string" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Class">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="ModelElement.taggedValue">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="TaggedValue">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="TaggedValue.dataValue" type="xs:string" />
+                                  <xs:element name="TaggedValue.type">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element name="TagDefinition">
+                                          <xs:complexType>
+                                            <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                                <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                    <xs:attribute name="visibility" type="xs:string" use="required" />
+                    <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                    <xs:attribute name="isRoot" type="xs:boolean" use="required" />
+                    <xs:attribute name="isLeaf" type="xs:boolean" use="required" />
+                    <xs:attribute name="isAbstract" type="xs:boolean" use="required" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ModelElement.taggedValue">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="TaggedValue">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TaggedValue.dataValue" type="xs:string" />
+                    <xs:element name="TaggedValue.type">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TagDefinition">
+                            <xs:complexType>
+                              <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                  <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="xmi.id" type="xs:string" use="required" />
+      <xs:attribute name="isRoot" type="xs:boolean" use="required" />
+      <xs:attribute name="isLeaf" type="xs:boolean" use="required" />
+      <xs:attribute name="isAbstract" type="xs:boolean" use="required" />
+      <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+      <xs:attribute name="visibility" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Diagram">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ModelElement.taggedValue">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="TaggedValue">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TaggedValue.dataValue" type="xs:string" />
+                    <xs:element name="TaggedValue.type">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TagDefinition">
+                            <xs:complexType>
+                              <xs:attribute name="xmi.idref" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="xmi.id" type="xs:string" use="required" />
+                  <xs:attribute name="isSpecification" type="xs:boolean" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="Diagram.element">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="DiagramElement">
+                <xs:complexType>
+                  <xs:attribute name="geometry" type="xs:string" use="required" />
+                  <xs:attribute name="subject" type="xs:string" use="required" />
+                  <xs:attribute name="seqno" type="xs:unsignedByte" use="optional" />
+                  <xs:attribute name="style" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="xmi.id" type="xs:string" use="required" />
+      <xs:attribute name="diagramType" type="xs:string" use="required" />
+      <xs:attribute name="owner" type="xs:string" use="required" />
+      <xs:attribute name="toolName" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<h1>DOCUMENTAÇAO DO PROTOTIPO</h1>
+<h2>SCRIPTS</h2>
+<h3>Program.cs</h3>Arquivo principal que e chamado pelo Unity.
+<h3>XMI.cs</h3>Responsavel por ler o arquivo XMI e armazenar os valores em variaveis.
+<h3>Diagram.cs</h3>E o mediador entre XMI.cs e Program.cs. Este arquivo le as informaçoes do XMI.cs e as estrutura de forma a facilitar o manuseio pelo Program.cs ou outros script.
+Desta maneira, existe uma classe que corresponde a um diagrama. Por exemplo, caso exista no arquivo.xmi diagramas do tipo sequencia, a classe Sequence possui instancias de cada diagrama de sequencia.
+<h3>SceneDiagram.cs</h3>Script para controlar o diagrama selecionado em "Scene 1".
+<h3>Prefabs/ButtonDiagram.cs</h3>Para acessar cada diagrama, este script cria um botao para cada diagrama identificado no arquivo.xmi.
+<h3>Prefabs/Life.cs</h3>Script para controlar o GameObject que renderiza o "quadrado" do objeto ou ator e a "linha" representando a lifeline.
+<h3>Algoritms/CenterObject.cs</h3>Centralizar os GameObjects em cena.

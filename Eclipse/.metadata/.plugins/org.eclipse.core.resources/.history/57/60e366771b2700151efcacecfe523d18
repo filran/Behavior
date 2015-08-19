@@ -1,0 +1,11 @@
+
+public class Teste {
+	public static void main(String[] args)
+	{
+		Programa p1 = new Programa(1);
+		Programa p2 = new Programa(2);
+		
+		Thread t1 = new Thread(p1);
+		
+	}
+}

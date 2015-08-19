@@ -1,0 +1,8 @@
+
+public class Teste {
+	public static void main(String[] args)
+	{
+		Programa p1 = new Programa(1);
+		
+	}
+}

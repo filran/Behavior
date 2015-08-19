@@ -1,0 +1,16 @@
+
+public class Programa {
+	private int id;
+	
+	public Programa(int iidd)
+	{
+		this.id = iidd;
+	}
+	
+	public void run()
+	{
+		
+	}
+	
+	
+}
